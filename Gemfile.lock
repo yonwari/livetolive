@@ -322,7 +322,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.1.0)
-  bootstrap-sass (~> 3.4.1)
+  bootstrap-sass
   bullet
   byebug
   capybara (>= 2.15)
