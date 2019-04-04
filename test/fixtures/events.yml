@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_title: MyString
+  start_date: 2019-04-04 23:13:38
+  end_date: 2019-04-04 23:13:38
+  place_id: 1
+  explanation: MyText
+  reserve_url: MyText
+  open_date: 2019-04-04 23:13:38
+  deleted_at: 2019-04-04 23:13:38
+
+two:
+  event_title: MyString
+  start_date: 2019-04-04 23:13:38
+  end_date: 2019-04-04 23:13:38
+  place_id: 1
+  explanation: MyText
+  reserve_url: MyText
+  open_date: 2019-04-04 23:13:38
+  deleted_at: 2019-04-04 23:13:38
