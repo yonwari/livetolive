@@ -1,0 +1,28 @@
+body.admin-body
+  .container
+    .head_title.center-block
+      h1 ユーザー管理
+
+    .admin_container
+      / ransack検索用
+      -provide(:user_name, 'All users')
+      .admin_users_form
+        =search_form_for @search  do |f|
+          .form-group
+            =f.text_field :user_name_cont, class: "form-control"
+          =f.submit "検索", class: "btn btn-info"
+
+      table.table
+        thead
+          tr
+            th ユーザー名
+            th メールア ドレス
+            th
+        tbody
+          - @result.each do |user|
+            tr
+              td =user.user_name
+              td =user.email
+              td = link_to "詳細", user_path(user)
+      
+      = paginate @users
