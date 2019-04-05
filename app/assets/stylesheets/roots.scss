@@ -1,0 +1,19 @@
+// Place all the styles related to the roots controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-body {
+  background-color: aliceblue;
+}
+
+.admin_container {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px dotted gray;
+  text-align: center;
+  padding: 20px;
+}
+
+.admin_link {
+  margin: 30px 0;
+}
