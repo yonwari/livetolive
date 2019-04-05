@@ -1,0 +1,12 @@
+body.admin-body
+  .container
+    .admin_container.col-xs-6.col-xs-offset-3
+      .head_title
+        h1 管理画面
+
+      .admin_links
+        h3.admin_link= link_to "ユーザー管理", users_path
+        h3.admin_link= link_to "ライブ会場管理", places_path
+        h3.admin_link= link_to "芸人管理", comedians_path
+        h3.admin_link= link_to "ライブ情報管理", events_path
+        h3.admin_link= link_to "マスタ登録", new_place_path

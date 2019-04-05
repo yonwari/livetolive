@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'roots/top'
+  get 'roots/admin_top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'root#top'
   devise_for :users, :controllers => {
