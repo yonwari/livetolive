@@ -1,4 +1,7 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin
+
   def new
     @place = Place.new
   end
@@ -41,6 +44,13 @@ class PlacesController < ApplicationController
     @key = ENV['GMAP_API_KEY']
     @place = Place.find(params[:id])
   end
+
+  private
+    def authenticate_admin
+      unless current_user.admin?
+        redirect_to events_path
+      end
+    end
 
   protected
     def place_params
