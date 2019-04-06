@@ -1,3 +1,17 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.place-form  {
+  display: flex;
+  justify-content: center;
+  text-align: end;
+}
+
+#map { 
+  height: 400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  width: 80%;
+}

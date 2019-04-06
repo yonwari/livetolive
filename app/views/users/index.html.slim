@@ -6,7 +6,7 @@ body.admin-body
     .admin_container
       / ransack検索用
       -provide(:user_name, 'All users')
-      .admin_users_form
+      .admin_users_form.form-inline
         =search_form_for @search  do |f|
           .form-group
             =f.text_field :user_name_cont, class: "form-control"

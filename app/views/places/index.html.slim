@@ -1,0 +1,27 @@
+body.admin-body
+  .container
+    .head_title.center-block
+      h1 会場情報一覧
+
+    .admin_container
+      / ransack検索用
+      -provide(:place_name, 'All places')
+      .admin_users_form.form-inline
+        =search_form_for @search  do |f|
+          .form-group
+            =f.text_field :place_name_cont, class: "form-control", placeholder:"会場名で検索"
+          =f.submit "検索", class: "btn btn-default"
+
+      table.table
+        thead
+          tr
+            th 会場名
+            th 住所
+            th
+        tbody
+          - @result.each do |place|
+            tr
+              td =place.place_name
+              td =place.address
+              td = link_to "詳細", place_path(place), class:"btn btn-info"
+      = paginate @places
