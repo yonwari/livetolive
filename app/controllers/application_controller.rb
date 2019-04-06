@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
 
   # ログイン後、ログアウト後のリダイレクト先指定
   def after_sign_in_path_for(resource)
-    root_path
+    if current_user.admin?
+      roots_admin_top_path
+    else
+      events_path
+    end
   end
+
   def after_sign_out_path_for(resource)
     new_user_session_path
   end

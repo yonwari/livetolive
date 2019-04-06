@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails', '~> 4.11'
 end
 
 group :development do
@@ -53,6 +54,9 @@ group :development do
   gem 'letter_opener'
   gem 'letter_opener_web'
   gem 'bullet'
+  gem 'pry-rails'
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :test do
@@ -61,6 +65,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -73,7 +79,6 @@ gem 'kaminari', '~> 1.1.1'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'ransack'
 gem 'font-awesome-rails'
-gem 'pry-rails'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'rails-i18n', '~> 5.1'
@@ -82,4 +87,4 @@ gem 'aws-sdk-s3', require: false
 gem 'dotenv'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
-gem 'rspec'
+gem 'json'
