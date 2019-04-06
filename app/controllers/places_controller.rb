@@ -14,22 +14,24 @@ class PlacesController < ApplicationController
     require 'json'
     require 'uri'
 
-    address = URI.encode(@place.address)
-    key = ENV['GMAP_API_KEY']
-    uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{key}")
-    http = Net::HTTP.new(uri.host, uri.port)
-    json = Net::HTTP.get(uri)
-    result = JSON.parse(json, {:symbolize_names => true})
-    @place.latitude = result[:results][0][:geometry][:location][:lat]
-    @place.longitude = result[:results][0][:geometry][:location][:lng]
+    if @place.address.present?
+      address = URI.encode(@place.address)
+      key = ENV['GMAP_API_KEY']
+      uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{key}")
+      http = Net::HTTP.new(uri.host, uri.port)
+      json = Net::HTTP.get(uri)
+      result = JSON.parse(json, {:symbolize_names => true})
+      @place.latitude = result[:results][0][:geometry][:location][:lat]
+      @place.longitude = result[:results][0][:geometry][:location][:lng]
+    end
 
     respond_to do |format|
       if @place.save
         format.html { redirect_to @place, notice: 'ライブ会場を登録しました' }
         format.json { render :show, status: :created, location: @place }
       else
-        format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
+        flash[:notice] = "error"
+        format.html { render :new, notice: '入力内容に不備があります' }
       end
     end
   end

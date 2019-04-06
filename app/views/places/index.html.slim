@@ -2,7 +2,8 @@ body.admin-body
   .container
     .head_title.center-block
       h1 会場情報一覧
-
+    #new_button
+      =link_to "新規作成", new_place_path, class:"btn btn-primary"
     .admin_container
       / ransack検索用
       -provide(:place_name, 'All places')

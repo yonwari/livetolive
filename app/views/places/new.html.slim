@@ -1,8 +1,17 @@
 body.admin-body
+  / エラーメッセージ
+  = @place
+  = @place.errors.full_messages
+  = flash[:notice]
+  -if @place.errors.any?
+    #error_explanation
+      h2= pluralize(@place.errors.count, "error")
+      ul
+        - @place.errors.full_messages.each do |message|
+          li= message
   .container
     .head_title.center-block
       h1 ライブ会場新規登録
-
     .admin_container
       .place-form
         =form_with model: @place do |f|
@@ -13,3 +22,4 @@ body.admin-body
             = f.label :address, "住所"
             = f.text_field :address, class: 'form-control'
           = f.submit "登録", class: 'btn btn-info'
+          = link_to "戻る", places_path, class:"btn btn-default"
