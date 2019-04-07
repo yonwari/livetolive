@@ -1,11 +1,14 @@
 class EventsController < ApplicationController
+  before_action :set_event, only: [:show, :edit, :update]
+
   def index
     @search = Event.ransack(params[:q])
     @result = @search.result.page(params[:page]).per(10).reverse_order
   end
 
   def show
-
+    @key = ENV['GMAP_API_KEY']
+    @place = @event.place
   end
 
   def new
@@ -14,7 +17,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    binding.pry
     if @event.save
       flash[:notice] = "ライブ情報の登録に成功しました"
       redirect_to events_path
@@ -24,8 +26,8 @@ class EventsController < ApplicationController
   end
 
   def edit
-
   end
+
   def update
 
   end
@@ -38,6 +40,10 @@ class EventsController < ApplicationController
     @event  = @comedian.events.page(params[:page])
   end
 
+  private
+    def set_event
+      @event = Event.find_by(id: params[:id])
+    end
 
   protected
     def event_params

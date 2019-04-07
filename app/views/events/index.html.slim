@@ -7,13 +7,14 @@ body.event-body
         .event_list
           .event_image
             -if event.event_image.attached?
-              = image_tag event.event_image, class:"event-image", fallback:"img/no_image.jpg", size: '300x400'
+              = link_to event_path(event) do
+                = image_tag event.event_image, class:"event-image", size: '300x400'
             -else
               = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
           .event_info
             .event_start
               p= event.start_date.strftime('%Y年%m月%d日 %H時%M分〜')
-            h2.event_title= event.event_title
+            h2.event_title= link_to event.event_title, event_path(event)
             .event_info_detail
               p 会場
               p= event.place.place_name
@@ -22,32 +23,5 @@ body.event-body
                 = render_with_hashtags(event.comedianlist)
               -else
                 p 出演者情報なし
-            .click_events_wrapper
-              .click_events
-                -if user_signed_in?
-                  .click_icon
-                    -if event.favorited_by?(current_user)
-                      = link_to event_favorites_path(event), remote:true, method: :delete do
-                        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                        <p>お気に入り</p>
-                    -else
-                      = link_to event_favorites_path(event), remote:true, method: :post do
-                        <i class="fa fa-heart" aria-hidden="true" style="color: gray;"></i>
-                        <p>お気に入り</p>
-                  .click_icon
-                    = link_to edit_event_path(event) do
-                      <i class="fa fa-edit"></i>
-                      <p>ライブ編集</p>
-                  .click_icon
-                    = link_to event.reserve_url do
-                      <i class="fa fa-paperclip"></i>
-                      <p>予約ページ</p>
-                  .click_icon
-                    -if event.calendared_by?(current_user)
-                      = link_to user_path(current_user) do
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <p>カレンダー登録済</p>
-                    -else
-                      = link_to event_calendar_events_path(event), method: :post do
-                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-                        <p>カレンダー追加</p>
+            / アクションアイコン呼び出し
+            = render partial: 'events/actionicons', locals: { event: event }
