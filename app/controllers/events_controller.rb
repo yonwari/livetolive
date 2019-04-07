@@ -29,6 +29,12 @@ class EventsController < ApplicationController
   end
 
   def update
+    if @event.update(event_params)
+      flash[:notice] = "ライブ情報を更新しました"
+      redirect_to @event
+    else
+      render :edit
+    end
 
   end
 

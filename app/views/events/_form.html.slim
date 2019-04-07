@@ -1,0 +1,31 @@
+.events-form
+  =form_with model: @event do |f|
+    .form-group
+      = f.label :event_title, "ライブ名"
+      = f.text_field :event_title, class: "form-control"
+    .form-group
+      = f.label :open_date, "開場時間"
+      = f.datetime_field :open_date, class:"form-control"
+    .form-group
+      = f.label :start_date, "開始日時"
+      = f.datetime_field :start_date, class:"form-control"
+    .form-group
+      = f.label :end_date, "終了日時"
+      = f.datetime_field :end_date, class:"form-control"
+    .form-group
+      = f.label :place_id, "会場"
+      = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name), {}, { class: 'searchable'}
+    .form-group
+      = f.label "出演者"
+      = f.text_area :comedianlist, class:"form-control"
+    .form-group
+      = f.label :explanation, "ライブ内容説明"
+      = f.text_area :explanation, class:"form-control"
+    .form-group
+      = f.label :reserve_url, "予約URL"
+      = f.text_field :reserve_url, class:"form-control"
+    .form-group
+      = f.label :event_image
+      = f.file_field :event_image
+    = f.submit "決定", class: 'btn btn-info'
+    = link_to "戻る", events_path, class:"btn btn-default"
