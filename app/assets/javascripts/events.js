@@ -5,3 +5,12 @@ $(function() {
     allowClear: true
   });
 });
+
+$(function(){
+  $(".fa-heart").on("click", function(){
+    $(this).css("color", "red");
+  });
+  $(".fa-heart").on("click", function(){
+    $(this).css("color", "gray");
+  });
+});

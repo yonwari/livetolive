@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations'
   }
   get '/admin_top', to: 'roots#admin_top'
-  resources :events, except: [:destroy]
-  resources :users, except: [:destroy] do
-    resources :favorites, only: [:create, :destroy]
-    resources :calendar_events, only: [:create, :destroy]
+  resources :events, except: [:destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resource :calendar_events, only: [:create, :destroy]
   end
+  resources :users, except: [:destroy]
   resources :places, except: [:destroy]
   resources :comedians, except: [:destroy]
   get 'inquiries/new'
