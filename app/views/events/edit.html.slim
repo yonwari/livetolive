@@ -1,0 +1,13 @@
+body.event-body
+  / エラーメッセージ
+  -if @event.errors.any?
+    #error_explanation
+      h2= pluralize(@event.errors.count, "error")
+      ul
+        - @event.errors.full_messages.each do |message|
+          li= message
+  .container
+    .head_title.center-block
+      h1 ライブ情報登録
+    .event_container
+      = render partial: 'events/form', locals: { event: @event }

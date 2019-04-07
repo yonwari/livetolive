@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// イベント一覧
 .event_list {
   display: flex;
   justify-content: center;
@@ -21,15 +21,40 @@
     i {
       font-size: 40px;
     }
-    .click_events {
-      display: flex;
-    }
-    .click_icon {
-      text-align: center;
-      margin: 5px;
-    }
-    .click_events_wrapper {
-      display: inline-block;
+  }
+}
+
+// クリックアイコン系
+.click_events {
+  display: flex;
+}
+.click_icon {
+  text-align: center;
+  margin: 5px;
+}
+.click_events_wrapper {
+  display: inline-block;
+}
+
+
+// イベント詳細
+.head_info {
+  display: flex;
+  justify-content: center;
+
+  .start_date, .hold_place {
+    display: inline-block;
+    margin: 10px;
+    h3 {
+      margin: 10px;
     }
   }
+}
+.main_info {
+  display: flex;
+}
+
+.events_show_container {
+  justify-content: center;
+  padding: 30px;
 }

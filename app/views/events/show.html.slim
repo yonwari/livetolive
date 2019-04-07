@@ -1,0 +1,75 @@
+body.event-body
+  .container
+    #event_head
+      .head_title.center-block
+        h1= @event.event_title
+      .events_show_container
+        .head_info
+          .start_date
+            h3 開演
+            h3 = @event.start_date.strftime('%Y年%m月%d日 %H時%M分')
+          .hold_place
+            h3 会場
+            h3 = @event.place.place_name
+        .main_info
+          .event_image
+            -if @event.event_image.attached?
+              = image_tag @event.event_image, class:"event-image", size: '300x400'
+            -else
+              = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
+          .event_detail_info
+            .event_explain
+              = @event.explanation
+            .event_moredetails
+              p 出演者
+              - if @event.comedianlist.present?
+                = render_with_hashtags(@event.comedianlist)
+              - else
+                p 出演者情報なし
+              p 開場時間
+              = @event.open_date.strftime('%Y年%m月%d日 %H時%M分')
+              p 閉園予定
+              = @event.end_date.strftime('%Y年%m月%d日 %H時%M分')
+              = render partial: 'events/actionicons', locals: { event: @event }
+
+    #event_map
+      .head_title.center-block
+        h1.event_map_title =@place.place_name
+      .events_container
+        p 住所
+        .event_map_info
+          = @place.address
+      #map
+
+
+
+
+javascript:
+    function initMap() {
+
+        var test ={lat: #{@place.latitude} , lng: #{@place.longitude} };
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = "場所：#{@place.address}";
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+
+/ API読み込み
+script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initMap"}
