@@ -1,4 +1,16 @@
 body.event-body
+  .top_image
+    .top_message
+      p はしごライフの強い味方。
+    .top_logo
+      = image_tag "img/livetolive_logo.png", size: "400x400"
+        <div class="search-bar">
+    .event_search_form
+      = search_form_for @search  do |f| 
+        = f.text_field :event_title_or_comedianlist_or_place_place_name_cont, placeholder:"ライブ名、芸人名、会場名で検索"
+        = button_tag( class: "btn btn-default btn-sm") do
+          = content_tag :span, "", class: "fa fa-search"
+
   .container
     .head_title.center-block
       h1 ライブ情報一覧
@@ -13,7 +25,7 @@ body.event-body
               = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
           .event_info
             .event_start
-              p= event.start_date.strftime('%Y年%m月%d日 %H時%M分〜')
+              p= event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
             h2.event_title= link_to event.event_title, event_path(event)
             .event_info_detail
               p 会場

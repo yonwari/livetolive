@@ -29,3 +29,11 @@
       = f.file_field :event_image
     = f.submit "決定", class: 'btn btn-info'
     = link_to "戻る", events_path, class:"btn btn-default"
+
+javascript:
+  $(function() {
+    return $(".searchable").select2({
+      width: 200,
+      allowClear: true
+    });
+  });ß
