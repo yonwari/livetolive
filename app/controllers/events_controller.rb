@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @key = ENV['GMAP_API_KEY']
+    @key = ENV['GMAP_API_KEY'] #map表示用
     @place = @event.place
   end
 
@@ -46,11 +46,13 @@ class EventsController < ApplicationController
     @event  = @comedian.events.page(params[:page])
   end
 
+  # 共通のセット処理
   private
     def set_event
       @event = Event.find_by(id: params[:id])
     end
 
+  # ストロングパラメータ
   protected
     def event_params
       params.require(:event).permit(:event_title, :start_date, :end_date, :place_id, :explanation, :reserve_url, :open_date, :event_image, :comedianlist)
