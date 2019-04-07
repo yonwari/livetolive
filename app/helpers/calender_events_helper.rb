@@ -1,2 +1,0 @@
-module CalenderEventsHelper
-end

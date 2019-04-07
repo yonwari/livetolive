@@ -1,3 +1,35 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.event_list {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+
+  .event_info {
+    border: 2px solid gray;
+    margin: 0 20px;
+    .event_start {
+      background-color: gray;
+      width: 100%;
+      color: white;
+      font-size: 30px;
+      padding: 10px 10px 1px 10px;
+    }
+    i {
+      font-size: 40px;
+    }
+    .click_events {
+      display: flex;
+    }
+    .click_icon {
+      text-align: center;
+      margin: 5px;
+    }
+    .click_events_wrapper {
+      display: inline-block;
+    }
+  }
+}

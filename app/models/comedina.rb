@@ -1,2 +1,0 @@
-class Comedina < ApplicationRecord
-end
