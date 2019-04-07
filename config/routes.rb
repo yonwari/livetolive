@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'roots/top'
-  get 'roots/admin_top'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'roots#top'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
@@ -18,9 +15,10 @@ Rails.application.routes.draw do
   get 'inquiries/confirm'
   post 'inquiries/confirm' => 'inquiries#confirm'
   get 'inquiries/thanks'
-
   get  'new' =>'inquiries#new'
   post 'thanks' => 'inquiries#thanks'
+
+  get '/events/comedian/:name', to: "events#comediantag"
 
   # 開発環境メール確認用
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?

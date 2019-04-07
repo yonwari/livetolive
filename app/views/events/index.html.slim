@@ -18,6 +18,10 @@ body.event-body
               p 会場
               p= event.place.place_name
               p 出演者
+              -if event.comedianlist.present?
+                = render_with_hashtags(event.comedianlist)
+              -else
+                p 出演者情報なし
             .click_events_wrapper
               .click_events
                 -if user_signed_in?
@@ -40,9 +44,10 @@ body.event-body
                       <p>予約ページ</p>
                   .click_icon
                     -if event.calendared_by?(current_user)
-                      = link_to event_calendar_events_path(event), method: :delete do
-                        <i class="fa fa-calender" aria-hidden="true"></i>
+                      = link_to user_path(current_user) do
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <p>カレンダー登録済</p>
                     -else
                       = link_to event_calendar_events_path(event), method: :post do
-                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <p>カレンダーへ</p>
+                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                        <p>カレンダー追加</p>

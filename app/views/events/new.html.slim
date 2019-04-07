@@ -29,7 +29,7 @@ body.event-body
             = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name), {}, { class: 'searchable'}
           .form-group
             = f.label "出演者"
-
+            = f.text_area :comedianlist, class:"form-control"
 
 
 
