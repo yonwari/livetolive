@@ -30,8 +30,7 @@ class PlacesController < ApplicationController
         format.html { redirect_to @place, notice: 'ライブ会場を登録しました' }
         format.json { render :show, status: :created, location: @place }
       else
-        flash[:notice] = "error"
-        format.html { render :new, notice: '入力内容に不備があります' }
+        format.html { render :new }
       end
     end
   end

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # ログイン後、ログアウト後のリダイレクト先指定
   def after_sign_in_path_for(resource)
     if current_user.admin?
-      roots_admin_top_path
+      admin_top_path
     else
       events_path
     end
