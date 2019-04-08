@@ -1,5 +1,5 @@
 .events-form
-  =form_with model: @event do |f|
+  =form_with model: @event, local: true do |f|
     .form-group
       = f.label :event_title, "ライブ名"
       = f.text_field :event_title, class: "form-control"
