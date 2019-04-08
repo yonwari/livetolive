@@ -19,11 +19,16 @@ class UsersController < ApplicationController
     #カレンダー登録したイベントと場所情報を配列にまとめる
     calendar_events.each do |calendar_event|
       @my_events << calendar_event.event
-      @my_places << [calendar_event.event.place.place_name, calendar_event.event.place.address, calendar_event.event.place.latitude, calendar_event.event.place.longitude]
+      @my_places << [calendar_event.event.place.place_name,
+                      calendar_event.event.place.address,
+                      calendar_event.event.place.latitude, 
+                      calendar_event.event.place.longitude]
     end
     @my_places_j = @my_places.to_json.html_safe
 
-    # @favirited_events = @user.favorites
+    # カレンダーjbuilder用
+    gon.user_id = current_user.id
+
   end
 
   def edit

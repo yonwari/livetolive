@@ -33,7 +33,7 @@ $(function () {
   $(document).on('turbolinks:before-cache', clearCalendar);
 
   $('#calendar').fullCalendar({
-      events: '/users/1.json',
+      events: `/users/${gon.user_id}.json`,
       //カレンダー上部を年月で表示させる
       titleFormat: 'YYYY年 M月',
       //ボタンのレイアウト
@@ -57,8 +57,34 @@ $(function () {
       //イベントの時間表示を２４時間に
       timeFormat: "HH:mm",
       //イベントの色を変える
-      eventColor: '#e6e6fa',
+      eventColor: '#ff6347',
       //イベントの文字色を変える
       eventTextColor: '#000000',
+  });
+});
+
+
+$(function () {
+  // 画面遷移を検知
+  $(document).on('turbolinks:load', function () {
+      // lengthを呼び出すことで、#calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
+      if ($('#calendar').length) {
+          function eventCalendar() {
+              return $('#calendar').fullCalendar({
+              });
+          };
+          function clearCalendar() {
+              $('#calendar').html('');
+          };
+
+          $(document).on('turbolinks:load', function () {
+              eventCalendar();
+          });
+          $(document).on('turbolinks:before-cache', clearCalendar);
+
+          $('#calendar').fullCalendar({
+              events: `/users/${gon.user_id}.json`
+          });
+      }
   });
 });
