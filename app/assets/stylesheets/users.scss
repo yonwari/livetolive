@@ -29,3 +29,10 @@
   text-align:left;
   width: 50%;
 }
+
+#my_top_container {
+  .head_wrap {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -15,6 +15,11 @@ class Event < ApplicationRecord
   validates :reserve_url, presence: true
   validates :open_date, presence: true
 
+  #scope
+  scope :from_now, -> { where('start_date >= ?', DateTime.now) }
+  scope :today, -> { where(start_date: DateTime.now.all_day) }
+  scope :recent, -> { order("start_date ASC") }
+
   # お気に入り、カレンダー登録チェック
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

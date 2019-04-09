@@ -10,19 +10,16 @@ class UsersController < ApplicationController
 
   def show
     @key = ENV['GMAP_API_KEY'] #map表示用
-    # ここで本日分のみに絞り込み！
-    calendar_events = @user.calendar_events
-    
-    @my_events = [] #カレンダーイベント表示用配列
-    @my_places = [] #MAPでJS引き渡し用の配列
+    @my_events = @user.events
+    @today_events = @user.events.today
 
-    #カレンダー登録したイベントと場所情報を配列にまとめる
-    calendar_events.each do |calendar_event|
-      @my_events << calendar_event.event
-      @my_places << [calendar_event.event.place.place_name,
-                      calendar_event.event.place.address,
-                      calendar_event.event.place.latitude, 
-                      calendar_event.event.place.longitude]
+    #場所情報を配列にまとめる
+    @my_places = [] #MAPでJS引き渡し用の配列
+    @today_events.each do |event|
+      @my_places << [event.place.place_name,
+                      event.place.address,
+                      event.place.latitude, 
+                      event.place.longitude]
     end
     @my_places_j = @my_places.to_json.html_safe #JS引き渡しのため整形
     gon.user_id = current_user.id # カレンダー表示jbuilder用

@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :favorites, dependent: :destroy
   has_many :calendar_events, dependent: :destroy
+  has_many :events, through: :calendar_events
 end

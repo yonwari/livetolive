@@ -1,46 +1,51 @@
 body.users_body
   .container
     #my_top_container
-      .head_title
-        p = @user.user_name
-        p さんのページ
-      .my_link_menu
-        .link_content
-          = link_to "#favorites_container" do
-            <i class="fa fa-heart"></i>
-            <span>お気に入りリストへ</span>
-        .link_content
-          = link_to edit_user_path(@user) do
-            <i class="fa fa-user"></i>
-            <span>ユーザー情報編集</span>
+      .head_wrap
+        .head_title
+          h2 = @user.user_name
+          h2 さんのページ
+        .my_link_menu
+          .link_content
+            = link_to :action => "show", :anchor => "favorites_container" do
+              <i class="fa fa-heart"></i>
+              <span>お気に入りリストへ</span>
+          .link_content
+            = link_to edit_user_path(@user) do
+              <i class="fa fa-user"></i>
+              <span>ユーザー情報編集</span>
       .mypage_main_contents
         .todays_event_container
           .todays_header
             = Date.today.strftime('%Y年%m月%d日')
             <span>の予定</span>
-          .schedule_table
-            table.table
-              thead
-                tr
-                  th 開演時間
-                  th ライブ名
-                  th ライブ会場
-              tbody
-                - if @my_events.count > 0
-                  - @my_events.each do |my_event|
-                    tr
-                      td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
-                      td = link_to my_event.event_title, my_event
-                      td = my_event.place.place_name
-                - else
-                  p 本日登録したイベントはありません
+          - if @today_events.count > 0
+            .schedule_table
+              table.table
+                thead
+                  tr
+                    th 開演時間
+                    th ライブ名
+                    th ライブ会場
+                tbody
+                    - @today_events.each do |my_event|
+                      tr
+                        td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
+                        td = link_to my_event.event_title, my_event
+                        td = my_event.place.place_name
+          - else
+            p 本日登録したイベントはありません
         #my_map
     #schedule_container
+      .head_title.center-block
+        h2 スケジュール
       #calendar
     #favorites_container
+      .head_title.center-block
+        h2 お気に入りリスト
       .events_container
         - if @my_favorites.count < 1
-          h3 お気に入りイベントはありません。
+          h4 お気に入り登録されたイベントはありません。
         - else
           - @my_favorites.each do |event|
             .event_list
@@ -75,27 +80,35 @@ javascript:
   function initMap() {
 
       var locations = #{@my_places_j};
-      var map = new google.maps.Map(document.getElementById('my_map'), {
-          zoom: 12,
-          center: new google.maps.LatLng(locations[0][2], locations[0][3]),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
-
-      var infowindow = new google.maps.InfoWindow;
-      var marker, i;
-
-      for (i = 0; i < #{raw @my_places.length.to_json}; i++) {  
-          marker = new google.maps.Marker({
-              position: new google.maps.LatLng(locations[i][2], locations[i][3]),
-              map: map
+      if (locations.length > 0) {
+          var map = new google.maps.Map(document.getElementById('my_map'), {
+              zoom: 12,
+              center: new google.maps.LatLng(locations[0][2], locations[0][3]),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
           });
 
-          google.maps.event.addListener(marker, 'click', (function(marker, i) {
-              return function() {
-                  infowindow.setContent(locations[i][0]);
-                  infowindow.open(my_map, marker);
-              }
-          })(marker, i));
+          var infowindow = new google.maps.InfoWindow;
+          var marker, i;
+
+          for (i = 0; i < #{raw @my_places.length.to_json}; i++) {  
+              marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(locations[i][2], locations[i][3]),
+                  map: map
+              });
+
+              google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                  return function() {
+                      infowindow.setContent(locations[i][0]);
+                      infowindow.open(my_map, marker);
+                  }
+              })(marker, i));
+          }
+      }else {
+          var map = new google.maps.Map(document.getElementById('my_map'), {
+              zoom: 12,
+              center: new google.maps.LatLng(35.681236, 139.767125),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
       }
   }
 
