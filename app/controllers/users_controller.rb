@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @key = ENV['GMAP_API_KEY'] #map表示用
     @my_events = @user.events
-    @today_events = @user.events.today
+    @today_events = @user.events.today.recent
 
     #場所情報を配列にまとめる
     @my_places = [] #MAPでJS引き渡し用の配列
