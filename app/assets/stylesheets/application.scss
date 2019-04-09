@@ -16,5 +16,55 @@
  *= require_self
  *= require fullcalendar
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
- @import "bootstrap"
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+body a {
+	text-decoration: none;
+	color: gray;
+}
+header{
+  color:gray;
+  .main_header{
+    background-color: rgb(220, 255, 231);
+  }
+  .sub_header {
+    background-color: azure;
+  }
+}
+body{
+	margin-top:105px;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+.header-icon{
+	font-size:25px;
+}
+.notice{
+	color:green;
+}
+#error-explanation{
+	color:red;
+}
+
+.header-item {
+	text-align: center;
+}
+
+.flash-messages {
+	text-align: center;
+}
+
+.navbar-right a {
+	text-decoration: none;
+	color: black;
+}
+
+.navbar-right p {
+	font-size: 11px;
+	line-height: 100%;
+}

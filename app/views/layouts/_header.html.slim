@@ -1,0 +1,79 @@
+header.navbar.navbar-fixed-top
+  .container
+    .main_header
+      nav.navbar-nav.navbar-left
+        .header_logo
+          = link_to root_path do
+            = image_tag("img/livetolive_logo.png", :size => "80x80", :alt => "ロゴ")
+      nav
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            - if current_user.admin?
+              li = link_to " 管理者トップ", admin_top_path
+              li = link_to " ユーザー管理", users_path
+              li = link_to " ライブ会場管理", places_path
+              li = link_to " ログアウト", destroy_user_session_path, method: :delete
+            - else
+              li
+                = link_to user_path(current_user) do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-music"></i>
+                    p マイページ
+              li
+                = link_to events_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-shopping-cart"></i>
+                    p ライブ情報
+              li
+                = link_to new_event_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-user"></i>
+                    p ライブ新規登録
+              li
+                = link_to destroy_user_session_path, method: :delete do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-sign-out"></i>
+                    p ログアウト
+              li
+                = link_to inquiries_new_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-envelope-o"></i>
+                    p お問い合わせ
+          - else
+              li
+                = link_to events_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-shopping-cart"></i>
+                    p ライブ情報
+              li
+                = link_to new_user_registration_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-user-plus"></i>
+                    p 会員登録
+              li
+                = link_to new_user_session_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-sign-in"></i>
+                    p ログイン
+              li
+                = link_to inquiries_new_path do
+                  .header-item
+                    span.header-icon
+                      <i class="fa fa-envelope-o"></i>
+                    p お問い合わせ
+  .container
+    .sub_header
+      nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          - user_name = current_user.user_name
+        - else
+          - user_name = "ゲスト"
+        = "ようこそ、#{user_name}さん"
