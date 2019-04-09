@@ -37,3 +37,4 @@ body.event-body
                 p 出演者情報なし
             / アクションアイコン呼び出し
             = render partial: 'events/actionicons', locals: { event: event }
+    .paginate = paginate @result

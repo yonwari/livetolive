@@ -2,8 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update]
 
   def index
-    @search = Event.ransack(params[:q])
-    @result = @search.result.page(params[:page]).per(10).reverse_order
+    @search = Event.from_now.ransack(params[:q])
+    @result = @search.result.page(params[:page]).per(10).recent
   end
 
   def show
