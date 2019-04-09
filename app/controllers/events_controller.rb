@@ -38,14 +38,6 @@ class EventsController < ApplicationController
 
   end
 
-  # 芸人タグページ表示用
-  def Comediantag
-    @user = current_user
-    @comedian = Comedian.find_by(comedian_name: params[:name])
-    @events = @comedian.events.build
-    @event  = @comedian.events.page(params[:page])
-  end
-
   # 共通のセット処理
   private
     def set_event
