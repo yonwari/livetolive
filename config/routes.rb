@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   get  'new' =>'inquiries#new'
   post 'thanks' => 'inquiries#thanks'
 
-  get '/events/comedian/:name', to: "events#comediantag"
-
   # 開発環境メール確認用
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 

@@ -5,7 +5,7 @@
 // TOP
 .top_image {
   width: 100%;
-  height: 700px;
+  height: 600px;
   background-image: url(img/theater_D.jpeg);
   background-size: cover;
   background-position: center;
@@ -24,6 +24,10 @@
 .top_logo {
   display: flex;
   justify-content: center;
+  img {
+    width: 300px;
+    height: 300px;
+  }
 }
 .event_search_form {
   display: flex;
@@ -40,6 +44,14 @@
     width: 53px;
     background-color: paleturquoise;
     font-size: 20px;
+  }
+}
+.search_buttons{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  .event_search_button{
+    margin: 10px;
   }
 }
 
