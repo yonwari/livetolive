@@ -38,6 +38,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      flash[:notice] = "ユーザー情報の更新に成功しました"
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   private
@@ -56,5 +62,10 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find_by(id: params[:id])
+    end
+
+  protected
+    def user_params
+      params.require(:user).permit(:user_name, :email)
     end
 end
