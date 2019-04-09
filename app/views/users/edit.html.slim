@@ -1,0 +1,20 @@
+body.users_body
+  .container
+    .head_title.center-block
+      h2 ユーザー情報編集
+    -if @user.errors.any?
+      #error_explanation
+        h2= pluralize(@user.errors.count, "error")
+        ul
+          - @user.errors.full_messages.each do |message|
+            li= message
+    .user-form
+        =form_with model: @user, local: true do |f|
+          .form-group.form-inline
+            = f.label :user_name, "ユーザー名"
+            = f.text_field :user_name, class: 'form-control'
+          .form-group.form-inline
+            = f.label :email, "メールアドレス"
+            = f.text_field :email, class: 'form-control'
+          = f.submit "更新", class: 'btn btn-info'
+          = link_to "戻る", @user, class:"btn btn-default"
