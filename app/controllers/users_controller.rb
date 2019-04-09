@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.ransack(params[:q])
-    @result = @search.result.page(params[:page]).reverse_order
+    @result = @search.result.page(params[:page]).per(10).reverse_order
   end
 
   def show
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     # ここで本日分のみに絞り込み！
     calendar_events = @user.calendar_events
     
-    @my_events = [] #イベント用配列
-    @my_places = [] #JS引き渡し用の配列
+    @my_events = [] #カレンダーイベント表示用配列
+    @my_places = [] #MAPでJS引き渡し用の配列
 
     #カレンダー登録したイベントと場所情報を配列にまとめる
     calendar_events.each do |calendar_event|
@@ -24,10 +24,16 @@ class UsersController < ApplicationController
                       calendar_event.event.place.latitude, 
                       calendar_event.event.place.longitude]
     end
-    @my_places_j = @my_places.to_json.html_safe
+    @my_places_j = @my_places.to_json.html_safe #JS引き渡しのため整形
+    gon.user_id = current_user.id # カレンダー表示jbuilder用
 
-    # カレンダーjbuilder用
-    gon.user_id = current_user.id
+    #お気に入りリスト表示用
+    favorites = @user.favorites
+    @my_favorites = []
+    favorites.each do |fav|
+      @my_favorites << fav.event
+    end
+    @my_favorites = Kaminari.paginate_array(@my_favorites).page(params[:page]).per(5) #kaminari用
 
   end
 

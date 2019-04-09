@@ -29,15 +29,42 @@ body.users_body
                 - if @my_events.count > 0
                   - @my_events.each do |my_event|
                     tr
-                      td = my_event.start_date.strftime('%Y年%m月%d日 %H時%M分')
-                      td = my_event.event_title
+                      td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
+                      td = link_to my_event.event_title, my_event
                       td = my_event.place.place_name
                 - else
                   p 本日登録したイベントはありません
-        #map
+        #my_map
     #schedule_container
       #calendar
     #favorites_container
+      .events_container
+        - if @my_favorites.count < 1
+          h3 お気に入りイベントはありません。
+        - else
+          - @my_favorites.each do |event|
+            .event_list
+              .event_image
+                -if event.event_image.attached?
+                  = link_to event_path(event) do
+                    = image_tag event.event_image, class:"event-image", size: '300x400'
+                -else
+                  = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
+              .event_info
+                .event_start
+                  p= event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
+                h2.event_title= link_to event.event_title, event_path(event)
+                .event_info_detail
+                  p 会場
+                  p= event.place.place_name
+                  p 出演者
+                  -if event.comedianlist.present?
+                    = render_with_hashtags(event.comedianlist)
+                  -else
+                    p 出演者情報なし
+                / アクションアイコン呼び出し
+                = render partial: 'events/actionicons', locals: { event: event }
+            .paginate = paginate @my_favorites
     #livetolive_container
 
 
@@ -48,7 +75,7 @@ javascript:
   function initMap() {
 
       var locations = #{@my_places_j};
-      var map = new google.maps.Map(document.getElementById('map'), {
+      var map = new google.maps.Map(document.getElementById('my_map'), {
           zoom: 12,
           center: new google.maps.LatLng(locations[0][2], locations[0][3]),
           mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -66,7 +93,7 @@ javascript:
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                   infowindow.setContent(locations[i][0]);
-                  infowindow.open(map, marker);
+                  infowindow.open(my_map, marker);
               }
           })(marker, i));
       }
