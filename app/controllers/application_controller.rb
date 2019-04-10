@@ -14,6 +14,20 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
   
+  private
+  #ユーザー認証
+    def authenticate_admin
+      unless current_user.admin?
+        redirect_to events_path
+      end
+    end
+
+    def correct_user
+      user = User.find_by(id: params[:id])
+      unless current_user.id == user.id || current_user.admin?
+        redirect_to events_path
+      end
+    end
   # user_nameカラム追加設定
   protected
   def configure_permitted_parameters
