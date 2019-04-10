@@ -10,19 +10,8 @@ class PlacesController < ApplicationController
     @place = Place.new(place_params)
 
     # API呼び出し、緯度経度を代入
-    require 'net/https'
-    require 'json'
-    require 'uri'
-
     if @place.address.present?
-      address = URI.encode(@place.address)
-      key = ENV['GMAP_API_KEY']
-      uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{key}")
-      http = Net::HTTP.new(uri.host, uri.port)
-      json = Net::HTTP.get(uri)
-      result = JSON.parse(json, {:symbolize_names => true})
-      @place.latitude = result[:results][0][:geometry][:location][:lat]
-      @place.longitude = result[:results][0][:geometry][:location][:lng]
+      @place.geocoding_set
     end
 
     respond_to do |format|
@@ -45,19 +34,8 @@ class PlacesController < ApplicationController
     @place.place_name = params[:place][:place_name]
 
     # API呼び出し、緯度経度を代入
-    require 'net/https'
-    require 'json'
-    require 'uri'
-
     if @place.address.present?
-      address = URI.encode(@place.address)
-      key = ENV['GMAP_API_KEY']
-      uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=#{key}")
-      http = Net::HTTP.new(uri.host, uri.port)
-      json = Net::HTTP.get(uri)
-      result = JSON.parse(json, {:symbolize_names => true})
-      @place.latitude = result[:results][0][:geometry][:location][:lat]
-      @place.longitude = result[:results][0][:geometry][:location][:lng]
+      @place.geocoding_set
     end
 
     respond_to do |format|
@@ -65,16 +43,14 @@ class PlacesController < ApplicationController
         format.html { redirect_to @place, notice: 'ライブ会場情報を更新しました' }
         format.json { render :show, status: :created, location: @place }
       else
-        flash[:notice] = "error"
-        format.html { render :new, notice: '入力内容に不備があります' }
+        format.html { render :edit }
       end
     end
   end
 
   def index
-    @places = Place.page(params[:page]).reverse_order
     @search = Place.ransack(params[:q])
-    @result = @search.result.page(params[:page])
+    @result = @search.result.page(params[:page]).per(10).reverse_order
   end
 
   def show
