@@ -2,6 +2,15 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update]
 
   def index
+    #複数条件検索用にパラメータ分割
+    search_words = params[:q].delete(:event_title_or_comedianlist_or_place_place_name_or_place_address_cont) if params[:q].present?
+    if search_words.present?
+      params[:q][:groupings] = []
+      search_words.split(/[ 　]/).each_with_index do |word, i| #空白で切って、単語ごとに処理
+        params[:q][:groupings][i] = { event_title_or_comedianlist_or_place_place_name_or_place_address_cont: word }
+      end
+    end
+
     @search = Event.from_now.ransack(params[:q])
     @result = @search.result.page(params[:page]).per(10).recent
   end
