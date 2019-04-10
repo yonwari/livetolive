@@ -54,7 +54,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @key = ENV['GMAP_API_KEY']
+    @key = Rails.application.credentials.api_key[:google]
     @place = Place.find(params[:id])
   end
 

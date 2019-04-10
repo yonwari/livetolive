@@ -28,11 +28,18 @@ body.users_body
                     th ライブ名
                     th ライブ会場
                 tbody
-                    - @today_events.each do |my_event|
+                    - @today_events.each_with_index do |my_event, count|
                       tr
                         td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
                         td = link_to my_event.event_title, my_event
                         td = my_event.place.place_name
+                        td = link_to "経路を調べる", "https://www.google.com/maps/dir/?api=1&destination=#{my_event.place.latitude},#{my_event.place.longitude}", target: "_blank"
+                      - if count != @today_events.length-1
+                        tr
+                          td
+                          td.arrow ↓
+                          td
+                          td
           - else
             p 本日登録したイベントはありません
         #my_map
@@ -70,10 +77,6 @@ body.users_body
                 / アクションアイコン呼び出し
                 = render partial: 'events/actionicons', locals: { event: event }
             .paginate = paginate @my_favorites
-    #livetolive_container
-
-
-
 
 
 javascript:
@@ -82,7 +85,7 @@ javascript:
       var locations = #{@my_places_j};
       if (locations.length > 0) {
           var map = new google.maps.Map(document.getElementById('my_map'), {
-              zoom: 12,
+              zoom: 11,
               center: new google.maps.LatLng(locations[0][2], locations[0][3]),
               mapTypeId: google.maps.MapTypeId.ROADMAP
           });

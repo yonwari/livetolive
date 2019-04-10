@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @key = ENV['GMAP_API_KEY'] #map表示用
+    @key = Rails.application.credentials.api_key[:google] #map表示用
     @place = @event.place
   end
 
