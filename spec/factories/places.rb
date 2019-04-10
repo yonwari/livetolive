@@ -4,5 +4,8 @@ FactoryBot.define do
     address { "東京都練馬区下石神井" }
     latitude { 35.7329 }
     longitude { 139.603 }
+    trait :invalid do
+      place_name nil
+    end
   end
 end
