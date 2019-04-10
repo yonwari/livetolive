@@ -1,4 +1,6 @@
 class RootsController < ApplicationController
+  before_action :authenticate_admin, only: [:admin_top]
+
   def top
     #検索画面用
     @search = Event.from_now.ransack(params[:q])

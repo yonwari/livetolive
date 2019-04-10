@@ -47,19 +47,6 @@ class UsersController < ApplicationController
   end
 
   private
-    def authenticate_admin
-      unless current_user.admin?
-        redirect_to events_path
-      end
-    end
-
-    def correct_user
-      user = User.find_by(id: params[:id])
-      unless current_user.id == user.id || current_user.admin?
-        redirect_to events_path
-      end
-    end
-
     def set_user
       @user = User.find_by(id: params[:id])
     end

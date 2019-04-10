@@ -58,13 +58,6 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
-  private
-    def authenticate_admin
-      unless current_user.admin?
-        redirect_to events_path
-      end
-    end
-
   protected
     def place_params
       params.require(:place).permit(:address, :place_name, :latitude, :longitude)
