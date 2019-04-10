@@ -8,8 +8,31 @@
   .head_title.center-block
     h1 人気ライブ情報
   .popular_lives
-
+    .swiper-wrapper
+      - @pop_events.each do |event|
+        .swiper-slide
+          = link_to event_path(event) do
+            - if event.event_image.attached?
+              = image_tag event.event_image, class:"slideimg", size: '300x400'
+            - else
+              = image_tag 'img/no_image.jpg', class:"slideimg", size:'300x400'
   .events_link
     = link_to events_path do
-      p ライブ一覧へ
+      <i class="fa fa-arrow-right"></i>
+      span ライブ一覧へ
 .top_last_container
+
+
+
+script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"
+javascript:
+  var swiper = new Swiper('.popular_lives', {
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 10,
+    initialSlide: 2,
+    autoplay: {
+      speed: 2000,
+      disableOnInteraction: true
+    },
+  });
