@@ -1,2 +1,15 @@
-hello world!
-= link_to " ログアウト", destroy_user_session_path, method: :delete
+= render partial: 'events/search', locals: { search: @search }
+.top_explain_container
+  .explain_header_top
+    h1 はしごライフの強い味方。
+  .explain_header
+    h4 ライブのはしごは、時間との闘いである。
+    h4 Live to Liveは、忙しいあなたのライブライフをサポートします。
+  .head_title.center-block
+    h1 人気ライブ情報
+  .popular_lives
+
+  .events_link
+    = link_to events_path do
+      p ライブ一覧へ
+.top_last_container
