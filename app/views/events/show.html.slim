@@ -28,9 +28,17 @@ body.event-body
                 p 出演者情報なし
               p 開場時間
               = @event.open_date.strftime('%Y年%m月%d日 %H時%M分')
-              p 閉園予定
+              p 閉演予定
               = @event.end_date.strftime('%Y年%m月%d日 %H時%M分')
-              = render partial: 'events/actionicons', locals: { event: @event }
+            .caldendar_info
+              - if @event.calendar_events.count > 0
+                = "#{@event.calendar_events.count}人のユーザーがカレンダーに登録しています！"
+              - else
+                p カレンダー登録しているユーザーはいません。
+            = render partial: 'events/actionicons', locals: { event: @event }
+            .share_button
+              a {href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Live to Liveでライブをはしごしよう！" data-hashtags="livetolive" data-lang="ja" data-show-count="false"}Tweet
+              script {async src="https://platform.twitter.com/widgets.js" charset="utf-8"}
 
     #event_map
       .head_title.center-block
