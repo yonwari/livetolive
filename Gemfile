@@ -57,6 +57,7 @@ group :development do
   gem 'pry-rails'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
