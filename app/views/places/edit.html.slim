@@ -1,8 +1,5 @@
 body.admin-body
   / エラーメッセージ
-  = @place
-  = @place.errors.full_messages
-  = flash[:notice]
   -if @place.errors.any?
     #error_explanation
       h2= pluralize(@place.errors.count, "error")
@@ -14,7 +11,7 @@ body.admin-body
       h1 ライブ会場情報更新
     .admin_container
       .place-form
-        =form_with model: @place do |f|
+        =form_with model: @place, local: true do |f|
           .form-group.form-inline
             = f.label :place_name, "会場名"
             = f.text_field :place_name, class: 'form-control'
