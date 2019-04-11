@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
 
     # API呼び出し、緯度経度を代入
     if @place.address.present?
-      @place.geocoding_set
+      @place.set_geocode_by_googleAPI
     end
 
     respond_to do |format|
@@ -35,7 +35,7 @@ class PlacesController < ApplicationController
 
     # API呼び出し、緯度経度を代入
     if @place.address.present?
-      @place.geocoding_set
+      @place.set_geocode_by_googleAPI
     end
 
     respond_to do |format|

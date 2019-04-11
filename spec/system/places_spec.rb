@@ -27,7 +27,7 @@ describe 'ライブ会場管理機能', type: :system do
       let(:login_user) { user }
 
       it '管理画面に遷移できず、ライブ情報一覧リダイレクトされる' do
-        expect(page).to have_no_content 'テスト会場'
+        expect(current_path).to eq(events_path)
       end
     end
   end
