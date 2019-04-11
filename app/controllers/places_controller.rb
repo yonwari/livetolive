@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_admin
+  before_action :authenticate_admin, except: [:search]
 
   def new
     @place = Place.new
@@ -51,6 +51,25 @@ class PlacesController < ApplicationController
   def index
     @search = Place.ransack(params[:q])
     @result = @search.result.page(params[:page]).per(10).reverse_order
+  end
+
+  def search
+    # 現在地取得
+    @latitude = params[:latitude]
+    @longitude = params[:longitude]
+    @places = Place.all.within(3, origin: [@latitude, @longitude])
+
+    @key = Rails.application.credentials.api_key[:google]
+    #MAP整形用
+    #場所情報を配列にまとめる
+    @near_places = [] #MAPでJS引き渡し用の配列
+    @places.each do |place|
+      @near_places << [place.place_name,
+                      place.address,
+                      place.latitude,
+                      place.longitude]
+    end
+    @near_places_j = @near_places.to_json.html_safe #JS引き渡しのため整形
   end
 
   def show
