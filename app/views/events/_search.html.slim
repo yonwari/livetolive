@@ -3,7 +3,6 @@
     p はしごライフの強い味方。
   .top_logo
     = image_tag "img/livetolive_logo.png", size: "400x400"
-      <div class="search-bar">
   .event_search_form
     = search_form_for search  do |f| 
       = f.text_field :event_title_or_comedianlist_or_place_place_name_or_place_address_cont, placeholder:"ライブ名、芸人名、会場名、地域名で検索 （例：「東京　千鳥　単独」）"
@@ -20,3 +19,5 @@
         = f.hidden_field :start_date_gteq, value: DateTime.tomorrow.beginning_of_day
         = f.hidden_field :start_date_lteq, value: DateTime.tomorrow.end_of_day
         = f.submit "明日のライブ", class:"btn btn-lg btn-danger"
+    .event_search_button.currentLocation
+      = button_tag '現在地から探す', class: 'btn btn-lg btn-primary', id: 'geosearch'

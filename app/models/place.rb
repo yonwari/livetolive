@@ -5,6 +5,11 @@ class Place < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
 
+  #geokit緯度経度検索用
+  acts_as_mappable  :default_units => :kms,
+                    :lat_column_name => :latitude,
+                    :lng_column_name => :longitude
+
   #APIでの緯度経度取得処理
   def geocoding_set
     begin

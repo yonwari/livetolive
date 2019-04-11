@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :users, except: [:destroy]
   resources :places, except: [:destroy]
+  get 'place/search' => 'places#search'
   resources :comedians, except: [:destroy]
   get 'inquiries/new'
   get 'inquiries/confirm'
