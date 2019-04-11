@@ -11,7 +11,7 @@ class Place < ApplicationRecord
                     :lng_column_name => :longitude
 
   #APIでの緯度経度取得処理
-  def geocoding_set
+  def set_geocode_by_googleAPI
     begin
       api_address = URI.encode(self.address)
       key = Rails.application.credentials.api_key[:google]
@@ -24,7 +24,6 @@ class Place < ApplicationRecord
       self.longitude = result[:results][0][:geometry][:location][:lng]
     rescue => e
       logger.error e 
-      flash[:notice] =  "処理中にエラーが発生しました"
     end
   end
 end
