@@ -36,6 +36,8 @@ RSpec.describe Place, type: :model do
         place_name: "新宿バティオス",
       )
       place.set_geocode_by_googleAPI
+      expect(place.latitude).not_to be_within(1.0).of(35)
+      expect(place.longitude).not_to be_within(1.0).of(139)
       expect(place).not_to  be_valid
     end
   end
