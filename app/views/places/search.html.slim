@@ -4,18 +4,21 @@
   .near_container
     .near_place_list
       h2 半径３km以内の会場
-      table
-        thead
-          tr
-            th 会場名
-            th 住所
-            th
-          - @places.each do |place|
-            tbody
-              tr
-                td = place.place_name
-                td = place.address
-                td = link_to "ここのライブを探す", { controller: :events, action: :index, q:{ place_place_name_eq: :"#{place.place_name}" }}, class:"btn btn-default"
+      - if @places.count > 0
+        table
+          thead
+            tr
+              th 会場名
+              th 住所
+              th
+            - @places.each do |place|
+              tbody
+                tr
+                  td = place.place_name
+                  td = place.address
+                  td = link_to "ここのライブを探す", { controller: :events, action: :index, q:{ place_place_name_eq: :"#{place.place_name}" }}, class:"btn btn-default"
+      - else
+        h4 近くにライブ会場はありません
     #near_map
 
 
