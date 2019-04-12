@@ -10,10 +10,10 @@ body.users_body
             = link_to :action => "show", :anchor => "favorites_container" do
               <i class="fa fa-heart"></i>
               <span>お気に入りリストへ</span>
-          .link_content
-            = link_to edit_user_path(@user) do
-              <i class="fa fa-user"></i>
-              <span>ユーザー情報編集</span>
+          .link_content#edit-user
+            / = link_to edit_user_path(@user) do
+            <i class="fa fa-user"></i>
+            <span>ユーザー情報編集</span>
       .mypage_main_contents
         .todays_event_container
           .todays_header
@@ -77,6 +77,28 @@ body.users_body
                 / アクションアイコン呼び出し
                 = render partial: 'events/actionicons', locals: { event: event }
             .paginate = paginate @my_favorites
+
+
+  #overlay
+    #result
+      h2#modal-title ユーザー情報編集
+      i.fa.fa-close#close
+      .user-form
+          =form_with model: @user, local: true do |f|
+            .form-group.form-inline
+              = f.label :user_name, "ユーザー名"
+              span.required *
+              = f.text_field :user_name, class: 'form-control', required: true
+            .form-group.form-inline
+              = f.label :email, "メールアドレス"
+              span.required *
+              = f.text_field :email, class: 'form-control', required: true, type: "email"
+            = f.submit "更新", class: 'btn btn-info'
+
+
+
+
+
 
 
 javascript:
