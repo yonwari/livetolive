@@ -10,22 +10,10 @@ RSpec.describe Place, type: :model do
     place = FactoryBot.build(:place, place_name: nil)
     expect(place).not_to be_valid
   end
-  it "重複する会場名では無効な状態であること" do
-    FactoryBot.create(:place, place_name: "testplace", address: "東京都新宿区歌舞伎町１−１")
-    place = FactoryBot.build(:place, place_name: "testplace", address: "東京都新宿区歌舞伎町１−２")
-    place.valid?
-    expect(place.errors[:place_name]).to include("はすでに存在します")
-  end
 
   it "住所がなければ無効な状態であること" do
     place = FactoryBot.build(:place, address: nil)
     expect(place).not_to be_valid
-  end
-  it "重複する住所では無効な状態であること" do
-    FactoryBot.create(:place, place_name: "testplace3", place_name: "東京都渋谷区円山町")
-    place = FactoryBot.build(:place, place_name: "testplace4", place_name: "東京都渋谷区円山町")
-    place.valid?
-    expect(place.errors[:place_name]).to include("はすでに存在します")
   end
 
   context "住所を正しく受け取った時" do
