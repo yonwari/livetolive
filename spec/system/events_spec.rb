@@ -183,7 +183,6 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(events_path)
           expect(page).to have_content 'テストライブ'
         end
       end
@@ -236,7 +235,6 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(events_path)
           expect(page).to have_content 'テストライブ'
         end
       end
@@ -287,7 +285,6 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(events_path)
           expect(page).to have_content 'テストライブ'
         end
       end
