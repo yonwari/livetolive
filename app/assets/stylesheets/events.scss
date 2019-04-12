@@ -111,3 +111,23 @@
   justify-content: center;
   padding: 30px;
 }
+
+
+// イベント新規追加
+.events-form {
+  .btn {
+    margin: 5px;
+    width: 100%;
+  }
+  .line-forms-wrapper{
+    display: flex;
+  }
+  .line-forms {
+    margin: 20px;
+  }
+}
+
+.events-form-wrap {
+  display: flex;
+  justify-content: center;
+}

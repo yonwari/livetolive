@@ -146,7 +146,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -162,14 +162,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(new_event_path)
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 
@@ -198,7 +193,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -214,14 +209,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(new_event_path)
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 
@@ -249,7 +239,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -264,14 +254,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(new_event_path)
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 
@@ -302,7 +287,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -318,14 +303,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(edit_event_path(event))
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 
@@ -354,7 +334,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -370,14 +350,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(edit_event_path(event))
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 
@@ -405,7 +380,7 @@ describe 'イベント機能', type: :system do
         fill_in '開始日時', with: start_date
         fill_in '終了日時', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
-        fill_in 'ライブ内容説明', with: explanation
+        fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
         click_button '決定'
       end
@@ -420,14 +395,9 @@ describe 'イベント機能', type: :system do
         let(:comedianlist) { "" }
 
         it 'エラーとなる' do
-          within '#error_explanation' do
-            expect(page).to have_content 'イベント名を入力してください'
-            expect(page).to have_content '開演日時を入力してください'
-            expect(page).to have_content '終演日時を入力してください'
-            expect(page).to have_content '紹介文を入力してください'
-            expect(page).to have_content '予約先URLを入力してください'
-            expect(page).to have_content '開場日時を入力してください'
-          end
+          expect(current_path).to eq(edit_event_path(event))
+          message = page.find('#event_event_title').native.attribute('validationMessage')
+          expect(message).not_to be_empty
         end
       end
 

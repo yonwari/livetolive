@@ -15,3 +15,31 @@ $(function(){
     $(this).css("color", "gray");
   });
 });
+
+
+
+//テキストカウント用
+$(function(){
+  var check = $(".count").text($("#text_count").val());
+  if(check.length){
+    $(".count").text($("#text_count").val().length);
+
+    $("#text_count").on("keydown keyup keypress change",function(){
+        var text_length = $(this).val().length;
+        var countup = text_length;
+        $(".count").text(countup);
+        // CSSは任意で
+        if(countup > 200){
+            $('.count').css({
+                color:'#ff0000',
+                fontWeight:'bold'
+            });
+        } else {
+            $('.count').css({
+                color:'#000000',
+                fontWeight:'normal'
+            });
+        }
+    });
+  }
+});

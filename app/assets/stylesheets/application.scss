@@ -28,15 +28,6 @@ body a {
 	text-decoration: none;
 	color: gray;
 }
-header{
-  color:gray;
-  .main_header{
-    background-color: rgb(220, 255, 231);
-  }
-  .sub_header {
-    background-color: azure;
-  }
-}
 body{
 	margin-top:105px;
 	font-family: 'Noto Sans JP', sans-serif;
@@ -67,4 +58,16 @@ body{
 .navbar-right p {
 	font-size: 11px;
 	line-height: 100%;
+}
+
+
+.required {
+  color: red;
+}
+
+input:invalid {
+  &:focus {
+		border-bottom-color: red;
+		color: red;
+  }
 }

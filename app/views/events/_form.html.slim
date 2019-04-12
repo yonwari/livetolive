@@ -1,42 +1,48 @@
-.events-form
-  =form_with model: @event, local: true do |f|
-    .form-group
-      = f.label :event_title, "ライブ名"
-      = f.text_field :event_title, class: "form-control"
-    .form-group
-      = f.label :open_date, "開場時間"
-      = f.datetime_field :open_date, class:"form-control"
-    .form-group
-      = f.label :start_date, "開始日時"
-      = f.datetime_field :start_date, class:"form-control"
-    .form-group
-      = f.label :end_date, "終了日時"
-      = f.datetime_field :end_date, class:"form-control"
-    .form-group
-      = f.label :place_id, "会場"
-      - if @event.place.present?
-        = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name, @event.place.id), {}, { class: 'searchable'}
-      - else
-        = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name), {}, { class: 'searchable'}
-    .form-group
-      = f.label "出演者"
-      = f.text_area :comedianlist, class:"form-control"
-    .form-group
-      = f.label :explanation, "ライブ内容説明"
-      = f.text_area :explanation, class:"form-control"
-    .form-group
-      = f.label :reserve_url, "予約URL"
-      = f.text_field :reserve_url, class:"form-control"
-    .form-group
-      = f.label :event_image
-      = f.file_field :event_image
-    = f.submit "決定", class: 'btn btn-info'
-    = link_to "戻る", events_path, class:"btn btn-default"
-
-javascript:
-  $(function() {
-    return $(".searchable").select2({
-      width: 200,
-      allowClear: true
-    });
-  });
+.events-form-wrap
+  .events-form
+    =form_with model: @event, local: true do |f|
+      .line-forms-wrapper
+        .line-forms
+          .form-group
+            = f.label :event_title, "ライブ名"
+            span.required *
+            = f.text_field :event_title, class: "form-control", placeholder: "例：「バカライブ」", required: true
+          .form-group
+            = f.label :open_date, "開場時間"
+            span.required *
+            = f.datetime_field :open_date, class:"form-control", required: true
+          .form-group
+            = f.label :start_date, "開始日時"
+            span.required *
+            = f.datetime_field :start_date, class:"form-control", required: true
+          .form-group
+            = f.label :end_date, "終了日時"
+            span.required *
+            = f.datetime_field :end_date, class:"form-control", required: true
+          .form-group
+            = f.label :place_id, "会場（リストから選択）"
+            span.required *
+            - if @event.place.present?
+              = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name, @event.place.id), {}, { class: 'searchable'}
+            - else
+              = f.select :place_id, options_from_collection_for_select(Place.all, :id, :place_name), {}, { class: 'searchable'}
+        .line-forms
+          .form-group
+            = f.label "出演者"
+            = f.text_area :comedianlist, class:"form-control", placeholder: "例：「#お笑い太郎 #笑神さん #ライブ太郎」"
+          .form-group
+            = f.label :explanation, "ライブ内容説明"
+            span.required *
+            = f.text_area :explanation, class:"form-control", required: true, id:"text_count", rows:"5"
+            span.count
+            span ／200文字
+          .form-group
+            = f.label :reserve_url, "予約URL"
+            span.required *
+            = f.text_field :reserve_url, class:"form-control", placeholder: "例：「https://example.jp/event/1」", required: true
+          .form-group
+            = f.label :event_image
+            = f.file_field :event_image
+      .event-form-buttons
+        = f.submit "決定", class: 'btn btn-info'
+        = link_to "戻る", events_path, class:"btn btn-default"
