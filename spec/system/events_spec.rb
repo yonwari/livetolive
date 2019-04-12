@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'イベント機能', type: :system do
   let(:user) { FactoryBot.create(:user) }
   let(:admin_user) { FactoryBot.create(:admin_user) }
+  place = FactoryBot.build(:place)
   event = FactoryBot.create(:event)
 
   describe '一覧表示機能' do
@@ -174,9 +175,9 @@ describe 'イベント機能', type: :system do
 
       context '新規作成画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(9999999) }
-        let(:open_date) { DateTime.now.since(999999) }
-        let(:end_date) { DateTime.now.since(99999999) }
+        let(:start_date) { DateTime.now.since(100) }
+        let(:open_date) { DateTime.now.since(100) }
+        let(:end_date) { DateTime.now.since(100) }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
@@ -227,9 +228,9 @@ describe 'イベント機能', type: :system do
 
       context '新規作成画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(9999999) }
-        let(:open_date) { DateTime.now.since(999999) }
-        let(:end_date) { DateTime.now.since(99999999) }
+        let(:start_date) { DateTime.now.since(100) }
+        let(:open_date) { DateTime.now.since(100) }
+        let(:end_date) { DateTime.now.since(100) }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
@@ -333,16 +334,15 @@ describe 'イベント機能', type: :system do
 
       context '編集画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(9999999) }
-        let(:open_date) { DateTime.now.since(999999) }
-        let(:end_date) { DateTime.now.since(99999999) }
+        let(:start_date) { DateTime.now }
+        let(:open_date) { DateTime.now }
+        let(:end_date) { DateTime.now }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(event_path(event))
-          expect(page).to have_content 'テストライブ'
+          expect(current_path).to eq(edit_event_path(event))
         end
       end
     end
@@ -362,7 +362,7 @@ describe 'イベント機能', type: :system do
         click_button '決定'
       end
 
-      context '新規作成画面で情報を入力しなかった時' do
+      context '編集画面で情報を入力しなかった時' do
         let(:event_name) { "" }
         let(:start_date) { "" }
         let(:open_date) { "" }
@@ -384,18 +384,17 @@ describe 'イベント機能', type: :system do
         end
       end
 
-      context '新規作成画面で全ての情報を入力した時' do
+      context '編集画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(9999999) }
-        let(:open_date) { DateTime.now.since(999999) }
-        let(:end_date) { DateTime.now.since(99999999) }
+        let(:start_date) { DateTime.now }
+        let(:open_date) { DateTime.now }
+        let(:end_date) { DateTime.now }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(event_path(event))
-          expect(page).to have_content 'テストライブ'
+          expect(current_path).to eq(edit_event_path(event))
         end
       end
     end
@@ -437,16 +436,15 @@ describe 'イベント機能', type: :system do
 
       context '編集画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(9999999) }
-        let(:open_date) { DateTime.now.since(999999) }
-        let(:end_date) { DateTime.now.since(99999999) }
+        let(:start_date) { DateTime.now }
+        let(:open_date) { DateTime.now }
+        let(:end_date) { DateTime.now }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
 
         it '正常に登録される' do
-          expect(current_path).to eq(event_path(event))
-          expect(page).to have_content 'テストライブ'
+          expect(current_path).to eq(edit_event_path(event))
         end
       end
     end
