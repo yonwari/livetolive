@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:search]
   before_action :authenticate_admin, except: [:search]
 
   def new
@@ -62,14 +62,16 @@ class PlacesController < ApplicationController
     @key = Rails.application.credentials.api_key[:google]
     #MAP整形用
     #場所情報を配列にまとめる
-    @near_places = [] #MAPでJS引き渡し用の配列
-    @places.each do |place|
-      @near_places << [place.place_name,
-                      place.address,
-                      place.latitude,
-                      place.longitude]
+    if @places.count > 0
+      @near_places = [] #MAPでJS引き渡し用の配列
+      @places.each do |place|
+        @near_places << [place.place_name,
+                        place.address,
+                        place.latitude,
+                        place.longitude]
+      end
+      @near_places_j = @near_places.to_json.html_safe #JS引き渡しのため整形
     end
-    @near_places_j = @near_places.to_json.html_safe #JS引き渡しのため整形
   end
 
   def show

@@ -1,7 +1,7 @@
 class Place < ApplicationRecord
   has_many :events
-  validates :place_name, presence: true, length: { maximum: 80 }
-  validates :address, presence: true
+  validates :place_name, presence: true, length: { maximum: 80 }, uniqueness: true
+  validates :address, presence: true, uniqueness: true
   validates :latitude, presence: true
   validates :longitude, presence: true
 
