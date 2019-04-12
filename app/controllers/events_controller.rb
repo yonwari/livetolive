@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       flash[:notice] = "ライブ情報の登録に成功しました"
-      redirect_to events_path
+      redirect_to @event
     else
       render :new
     end
