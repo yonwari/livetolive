@@ -90,15 +90,3 @@
 	text-align: center;
 	margin-bottom: 30px;
 }
-
-.required {
-  color: red;
-}
-
-input:invalid {  
-  border-bottom-color: red;
-  color: red;
-  &:focus {
-    box-shadow: 2px 2px 2px 2px red;
-  }
-}
