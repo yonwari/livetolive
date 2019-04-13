@@ -21,7 +21,7 @@
 //= require_tree .
 
 // TOPのSwiper用
-$(document).on('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function() {
   var swiper = new Swiper('.popular_lives', {
     loop: true,
     slidesPerView: 4,
@@ -36,7 +36,7 @@ $(document).on('turbolinks:load', function() {
 
 
 // fullcalendar用
-$(function () {
+document.addEventListener('turbolinks:load',function () {
   function eventCalendar() {
       return $('#calendar').fullCalendar({});
   };
@@ -81,35 +81,35 @@ $(function () {
 
 // 現在地から検索ボタン用。
 // 現在地を取得しsearchアクションに投げる
-$(document).on('turbolinks:load', function() {
-    document.getElementById("geosearch").onclick = function() {
-    if( navigator.geolocation ){
-    // 現在位置を取得できる場合の処理
-      navigator.geolocation.getCurrentPosition(
-        successCallback, errorCallback
-      );
-    } else {
-    // 現在位置を取得できない場合の処理
-      alert("現在地の取得に失敗しました");
-    }
-
-    function successCallback(position) {
-      window.location.href = `/place/search?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
-    };
-    function errorCallback(error) {
-      var err_msg = "";
-      switch(error.code)
-      {
-        case 1:
-          err_msg = "位置情報の利用が許可されていません";
-          break;
-        case 2:
-          err_msg = "デバイスの位置が判定できません";
-          break;
-        case 3:
-          err_msg = "タイムアウトしました";
-          break;
+document.addEventListener('turbolinks:load', function() {
+    $("#geosearch").on('click', function() {
+      if( navigator.geolocation ){
+      // 現在位置を取得できる場合の処理
+        navigator.geolocation.getCurrentPosition(
+          successCallback, errorCallback
+        );
+      } else {
+      // 現在位置を取得できない場合の処理
+        alert("現在地の取得に失敗しました");
       }
-    };
-  };
+
+      function successCallback(position) {
+        window.location.href = `/place/search?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+      };
+      function errorCallback(error) {
+        var err_msg = "";
+        switch(error.code)
+        {
+          case 1:
+            err_msg = "位置情報の利用が許可されていません";
+            break;
+          case 2:
+            err_msg = "デバイスの位置が判定できません";
+            break;
+          case 3:
+            err_msg = "タイムアウトしました";
+            break;
+        }
+      };
+    });
 });
