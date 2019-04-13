@@ -8,4 +8,13 @@ FactoryBot.define do
       place_name nil
     end
   end
+  factory :shibuya, class:Place do
+    place_name { "渋谷会場" }
+    address { "東京都渋谷区円山町" }
+    latitude { 35.6566	 }
+    longitude { 139.694 }
+    trait :invalid do
+      place_name nil
+    end
+  end
 end
