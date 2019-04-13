@@ -39,7 +39,7 @@ describe 'ユーザー機能', type: :system do
         visit user_path(user)
       end
 
-      it 'ライブ会場詳細が表示される' do
+      it 'マイページが表示される' do
         expect(page).to have_content user.user_name
       end
     end
@@ -51,7 +51,7 @@ describe 'ユーザー機能', type: :system do
         visit user_path(user)
       end
 
-      it 'ライブ会場詳細が表示される' do
+      it 'マイページが表示される' do
         expect(page).to have_content user.user_name
       end
     end

@@ -31,4 +31,15 @@ FactoryBot.define do
     comedianlist { "#test #test2 #dat" }
     place
   end
+
+  factory :nm_event, class:Event do
+    event_title { "来月用ライブ" }
+    start_date { DateTime.now.next_month }
+    open_date { DateTime.now.next_month }
+    end_date { DateTime.now.next_month }
+    explanation { "test nm" }
+    reserve_url { "https://www.yahoo.co.jp/" }
+    comedianlist { "#test #test2 #nm" }
+    place
+  end
 end
