@@ -1,5 +1,5 @@
 // select2用
-$(function() {
+document.addEventListener('turbolinks:load', function() {
   return $(".searchable").select2({
     width: 200,
     allowClear: true
@@ -19,7 +19,7 @@ $(function(){
 
 
 //テキストカウント用
-$(function(){
+document.addEventListener('turbolinks:load', function() {
   var check = $(".count").text($("#text_count").val());
   if(check.length){
     $(".count").text($("#text_count").val().length);

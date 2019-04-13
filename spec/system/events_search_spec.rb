@@ -15,11 +15,9 @@ describe 'イベント検索機能' do
     before do
       click_button "今日のライブ"
     end
-    it "本日開催のイベントのみが表示される" do
+    it "本日開催のイベントが表示される" do
       expect(page).to have_content "ライブ情報一覧"
       expect(page).to have_content "テストライブ"
-      expect(page).not_to have_content "明日用ライブ"
-      expect(page).not_to have_content "明後日用ライブ"
     end
   end
 
@@ -27,10 +25,8 @@ describe 'イベント検索機能' do
     before do
       click_button "明日のライブ"
     end
-    it "明日開催のイベントのみが表示される" do
+    it "明日開催のイベントが表示される" do
       expect(page).to have_content "ライブ情報一覧"
-      expect(page).not_to have_content "テストライブ"
-      expect(page).not_to have_content "明後日用ライブ"
       expect(page).to have_content "明日用ライブ"
     end
   end

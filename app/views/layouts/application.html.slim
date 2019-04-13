@@ -8,9 +8,11 @@ html
     = Gon::Base.render_data
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"
     link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css"
   body
     = render partial: 'layouts/header'
     = flash[:notice]
     = yield
     = render partial: 'layouts/footer'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"
