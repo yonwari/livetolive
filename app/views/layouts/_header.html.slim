@@ -2,7 +2,7 @@ header.navbar.navbar-fixed-top
   .container
     .main_header
       nav.navbar-nav.navbar-left
-        .header_logo
+        .header_logo data-turbolinks="false"
           = link_to root_path do
             = image_tag("img/livetolive_logo.png", :size => "80x80", :alt => "ロゴ")
       nav
@@ -14,7 +14,7 @@ header.navbar.navbar-fixed-top
               li = link_to " ライブ会場管理", places_path
               li = link_to " ログアウト", destroy_user_session_path, method: :delete
             - else
-              li
+              li data-turbolinks="false"
                 = link_to user_path(current_user) do
                   .header-item
                     span.header-icon
