@@ -91,3 +91,4 @@ gem 'fullcalendar-rails'
 gem 'json'
 gem 'gon'
 gem 'geokit-rails'
+gem 'whenever', :require => false
