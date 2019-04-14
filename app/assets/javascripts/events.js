@@ -7,13 +7,24 @@ document.addEventListener('turbolinks:load', function() {
 });
 
 // お気に入り用
-$(function(){
-  $(".fa-heart").on("click", function(){
-    $(this).css("color", "red");
-  });
-  $(".fa-heart").on("click", function(){
-    $(this).css("color", "gray");
-  });
+document.addEventListener('turbolinks:load', function(){
+    $("body").on("click", ".favorite-icon", function(){
+        $(this).attr("class","fa fa-heart delete-icon");
+        $(this).css("color", "red");
+    });
+    $("body").on("click", ".delete-icon", function(){
+      $(this).attr("class","fa fa-heart favorite-icon");
+      $(this).css("color", "gray");
+    });
+});
+// カレンダー登録用
+document.addEventListener('turbolinks:load', function(){
+    $("body").on("click", ".add-calendar", function(){
+        $(this).attr("class","fa fa-calendar delete-calendar");
+    });
+    $("body").on("click", ".delete-calendar", function(){
+      $(this).attr("class","fa fa-calendar-plus-o add-calendar");
+    });
 });
 
 
@@ -28,7 +39,6 @@ document.addEventListener('turbolinks:load', function() {
         var text_length = $(this).val().length;
         var countup = text_length;
         $(".count").text(countup);
-        // CSSは任意で
         if(countup > 200){
             $('.count').css({
                 color:'#ff0000',

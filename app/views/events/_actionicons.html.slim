@@ -3,12 +3,12 @@
     .click_icon
       -if user_signed_in?
         -if event.favorited_by?(current_user)
-          = link_to event_favorites_path(event), method: :delete, id:"favorite" do
-            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+          = link_to event_favorites_path(event), method: :delete, remote:true, id:"favorite" do
+            <i class="fa fa-heart delete-icon" aria-hidden="true" style="color: red;"></i>
             <p>お気に入り</p>
         -else
-          = link_to event_favorites_path(event), method: :post, id:"favorite" do
-            <i class="fa fa-heart" aria-hidden="true" style="color: gray;"></i>
+          = link_to event_favorites_path(event), method: :post, remote:true, id:"favorite" do
+            <i class="fa fa-heart favorite-icon" aria-hidden="true" style="color: gray;"></i>
             <p>お気に入り</p>
       -else
           = link_to event_favorites_path(event), method: :post, id:"favorite" do
@@ -25,11 +25,11 @@
     .click_icon
       -if user_signed_in?
         -if event.calendared_by?(current_user)
-          = link_to event_calendar_events_path(event), method: :delete, id:"calendaradd" do
+          = link_to event_calendar_events_path(event), method: :delete, remote:true, id:"calendaradd" do
             <i class="fa fa-calendar" aria-hidden="true"></i>
             <p>カレンダー登録済</p>
         -else
-          = link_to event_calendar_events_path(event), method: :post, id:"calendaradd" do
+          = link_to event_calendar_events_path(event), method: :post, remote:true, id:"calendaradd" do
             <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
             <p>カレンダー追加</p>
       -else
