@@ -31,4 +31,6 @@
                 = render partial: 'events/actionicons', locals: { event: event }
       - else
         h2 検索結果はありません。
-    .paginate = paginate @result
+    .paginate
+      h4= page_entries_info(@result)
+      h4= paginate @result
