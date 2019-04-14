@@ -88,6 +88,14 @@
   }
 }
 
+.event-body .head_title {
+  color: white;
+  background-color: rgb(134, 29, 29);
+  border: none;
+  height: 80px;
+  h1 {line-height: 80px;}
+}
+
 .paginate {
   text-align: center;
 }
@@ -108,24 +116,37 @@
 
 // イベント詳細
 .head_info {
-  display: flex;
-  justify-content: center;
-
   .start_date, .hold_place {
-    display: inline-block;
+    display: flex;
     margin: 10px;
     h3 {
       margin: 10px;
+    }
+    .heading {
+      background-color: rgb(238, 206, 65);
+      width: 100px;
+      height: 50px;
+      border-radius: 20px;
+      h3 {
+        line-height: 50px;
+        margin: 0;
+        text-align: center;
+      }
     }
   }
 }
 .main_info {
   display: flex;
+  margin: 40px 0;
+}
+.event_detail_info {
+  padding: 20px;
 }
 
 .events_show_container {
   justify-content: center;
   padding: 30px;
+  padding-top: 0;
 }
 
 
