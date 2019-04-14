@@ -36,6 +36,7 @@ describe 'マイページ機能', type: :system do
         before do
           visit event_path(today_event)
           click_link "calendaradd"
+          visit user_path(user)
         end
         it "本日の予定欄にライブが追加される" do
           expect(page).to have_content "テストライブ"
@@ -47,6 +48,7 @@ describe 'マイページ機能', type: :system do
         before do
           visit event_path(tomorrow_event)
           click_link "calendaradd"
+          visit user_path(user)
         end
         it "カレンダーのみにライブが追加される" do
           expect(page).to have_content "明日用ライブ"
@@ -58,6 +60,7 @@ describe 'マイページ機能', type: :system do
         before do
           visit event_path(nextmonth_event)
           click_link "calendaradd"
+          visit user_path(user)
         end
         context "1ページ目の時" do
           it "カレンダー1ページ目にはライブが見えない" do
