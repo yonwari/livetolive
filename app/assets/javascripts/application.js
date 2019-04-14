@@ -34,6 +34,23 @@ document.addEventListener('turbolinks:load', function() {
   });
 });
 
+//Topイメージのスライド用
+document.addEventListener('turbolinks:load',function() {
+  $('.top_image').vegas({
+      slides: [
+          { src: 'assets/img/theater_D.jpg' },
+          { src: 'assets/img/liveimage.jpg' },
+          { src: 'assets/img/shibuyanight.jpg' },
+      ],
+      overlay: 'assets/overlays/03.png', //フォルダ『overlays』の中からオーバーレイのパターン画像を選択
+      transition: 'fade', //スライドを遷移させる際のアニメーション
+      transitionDuration: 3000, //スライドの遷移アニメーションの時間
+      delay: 8000, //スライド切り替え時の遅延時間
+      animation: 'random', //スライド表示中のアニメーション
+      animationDuration: 10000, //スライド表示中のアニメーションの時間
+  });
+});
+
 
 // fullcalendar用
 document.addEventListener('turbolinks:load',function () {

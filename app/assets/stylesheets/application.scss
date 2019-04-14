@@ -29,11 +29,22 @@ body a {
 	color: gray;
 }
 body{
-	margin-top:105px;
-	font-family: 'Noto Sans JP', sans-serif;
+	margin-top:81px;
+	font-family: 'Kosugi Maru', sans-serif;
+	background-image: url(img/background.jpeg);
+}
+header {
+	background-color: white;
+	opacity:0.5;
+	.container {
+		border-bottom: 1px solid gray;
+	}
 }
 .header-icon{
 	font-size:25px;
+	i {
+		color: rgb(155, 0, 0);
+	}
 }
 .notice{
 	color:green;
@@ -59,7 +70,9 @@ body{
 	font-size: 11px;
 	line-height: 100%;
 }
-
+.navbar {
+	margin-bottom: 0;
+}
 
 .required {
   color: red;
@@ -70,4 +83,30 @@ input:invalid {
 		border-bottom-color: red;
 		color: red;
   }
+}
+
+// TOP
+.explain_header {
+  text-align: center;
+}
+.explain_header_top {
+  text-align: center;
+  h1 {
+    font-size: 50px;
+		margin: 50px;
+		margin-top: 0px;
+		padding-top: 50px;
+  }
+}
+.top_explain_container {
+	background-color: rgb(134, 29, 29);
+	color: white;
+	.head_title {
+		color: black;
+		background-color: white;
+		opacity: 0.5;
+		border: none;
+		height: 80px;
+		h1 {line-height: 80px;}
+	}
 }
