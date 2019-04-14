@@ -18,7 +18,7 @@ header.navbar.navbar-fixed-top
                 = link_to user_path(current_user) do
                   .header-item
                     span.header-icon
-                      <i class="fa fa-music"></i>
+                      <i class="fa fa-user"></i>
                     p マイページ
               li
                 = link_to events_path do
@@ -69,11 +69,3 @@ header.navbar.navbar-fixed-top
                     span.header-icon
                       <i class="fa fa-envelope-o"></i>
                     p お問い合わせ
-  .container
-    .sub_header
-      nav.navbar-nav.navbar-right
-        - if user_signed_in?
-          - user_name = current_user.user_name
-        - else
-          - user_name = "ゲスト"
-        = "ようこそ、#{user_name}さん"
