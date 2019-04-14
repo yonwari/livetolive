@@ -63,24 +63,35 @@
   padding: 30px;
 
   .event_info {
-    border: 2px solid gray;
+    border: 3px solid rgb(134, 29, 29);
     margin: 0 20px;
+    border-radius: 10px;
     .event_start {
-      background-color: gray;
+      background-color: rgb(134, 29, 29);
       width: 100%;
       color: white;
       font-size: 30px;
       padding: 10px 10px 1px 10px;
     }
     i {
-      font-size: 40px;
+      font-size: 30px;
     }
+  }
+}
+.event_info_detail_wrapper {
+  margin: 25px;
+  h2 {
+    text-align: center;
+  }
+  p {
+    font-size: 15px;
   }
 }
 
 // クリックアイコン系
 .click_events {
   display: flex;
+  margin: 30px 0;
 }
 .click_icon {
   text-align: center;
