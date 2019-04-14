@@ -1,0 +1,9 @@
+h2 Live to Live からのお知らせ
+h4 今週のライブトップ１０をお知らせします！
+
+- @pop_events.each_with_index do |event, rank|
+  h4
+    | 第
+    = rank+1
+    | 位
+  p = link_to event.event_title, event_url(event)
