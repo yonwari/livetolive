@@ -63,24 +63,47 @@
   padding: 30px;
 
   .event_info {
-    border: 2px solid gray;
+    border: 3px solid rgb(134, 29, 29);
     margin: 0 20px;
+    border-radius: 10px;
     .event_start {
-      background-color: gray;
+      background-color: rgb(134, 29, 29);
       width: 100%;
       color: white;
       font-size: 30px;
       padding: 10px 10px 1px 10px;
     }
     i {
-      font-size: 40px;
+      font-size: 30px;
     }
   }
+}
+.event_info_detail_wrapper {
+  margin: 25px;
+  h2 {
+    text-align: center;
+  }
+  p {
+    font-size: 15px;
+  }
+}
+
+.event-body .head_title {
+  color: white;
+  background-color: rgb(134, 29, 29);
+  border: none;
+  height: 80px;
+  h1 {line-height: 80px;}
+}
+
+.paginate {
+  text-align: center;
 }
 
 // クリックアイコン系
 .click_events {
   display: flex;
+  margin: 30px 0;
 }
 .click_icon {
   text-align: center;
@@ -93,24 +116,37 @@
 
 // イベント詳細
 .head_info {
-  display: flex;
-  justify-content: center;
-
   .start_date, .hold_place {
-    display: inline-block;
+    display: flex;
     margin: 10px;
     h3 {
       margin: 10px;
+    }
+    .heading {
+      background-color: rgb(238, 206, 65);
+      width: 100px;
+      height: 50px;
+      border-radius: 20px;
+      h3 {
+        line-height: 50px;
+        margin: 0;
+        text-align: center;
+      }
     }
   }
 }
 .main_info {
   display: flex;
+  margin: 40px 0;
+}
+.event_detail_info {
+  padding: 20px;
 }
 
 .events_show_container {
   justify-content: center;
   padding: 30px;
+  padding-top: 0;
 }
 
 

@@ -11,23 +11,26 @@
             .event_image
               = link_to event_path(event) do
                 - if event.event_image.attached?
-                  = image_tag event.event_image, class:"event-image", size: '300x400'
+                  = image_tag event.event_image, class:"event-image", size: '315x415'
                 - else
-                  = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
+                  = image_tag 'img/no_image.jpg', class:"event-image", size:'315x415'
             .event_info
               .event_start
                 p= event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
-              h2.event_title= link_to event.event_title, event_path(event)
-              .event_info_detail
-                p 会場
-                p = event.place.place_name
-                p 出演者
-                - if event.comedianlist.present?
-                  = render_with_hashtags(event.comedianlist)
-                - else
-                  p 出演者情報なし
-              / アクションアイコン呼び出し
-              = render partial: 'events/actionicons', locals: { event: event }
+              .event_info_detail_wrapper
+                h2.event_title= link_to event.event_title, event_path(event)
+                .event_info_detail
+                  p 会場
+                  p = event.place.place_name
+                  p 出演者
+                  - if event.comedianlist.present?
+                    = render_with_hashtags(event.comedianlist)
+                  - else
+                    p 出演者情報なし
+                / アクションアイコン呼び出し
+                = render partial: 'events/actionicons', locals: { event: event }
       - else
         h2 検索結果はありません。
-    .paginate = paginate @result
+    .paginate
+      h4= page_entries_info(@result)
+      h4= paginate @result

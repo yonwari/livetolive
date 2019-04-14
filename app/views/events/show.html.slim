@@ -4,12 +4,14 @@
       .head_title.center-block
         h1= @event.event_title
       .events_show_container
-        .head_info
+        .head_info.col-xs-offset-3
           .start_date
-            h3 開演
+            .heading
+              h3 開演
             h3 = @event.start_date.strftime('%Y年%m月%d日 %H時%M分')
           .hold_place
-            h3 会場
+            .heading
+              h3 会場
             h3 = @event.place.place_name
         .main_info
           .event_image
