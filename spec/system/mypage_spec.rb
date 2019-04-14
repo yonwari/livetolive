@@ -77,14 +77,26 @@ describe 'マイページ機能', type: :system do
   end
 
   context "未ログインの時" do
-    before do
-      visit event_path(today_event)
+    context "お気に入り登録しようとした時" do
+      before do
+        visit event_path(today_event)
+        click_link "favorite"
+      end
+      it "フラッシュメッセージが表示され、ログイン画面にリダイレクトされる" do
+        expect(page).to have_content "ログインしてください"
+        expect(current_path).to eq(new_user_session_path)
+      end
     end
-    it "お気に入り登録ボタンがない" do
-      expect(page).not_to have_link 'favorite'
+    context "カレンダー登録しようとした時" do
+      before do
+        visit event_path(today_event)
+        click_link "calendaradd"
+      end
+      it "フラッシュメッセージが表示され、ログイン画面にリダイレクトされる" do
+        expect(page).to have_content "ログインしてください"
+        expect(current_path).to eq(new_user_session_path)
+      end
     end
-    it "カレンダー登録ボタンがない" do
-      expect(page).not_to have_link 'calendaradd'
-    end
+
   end
 end
