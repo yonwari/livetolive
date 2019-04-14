@@ -1,4 +1,5 @@
 class RootsController < ApplicationController
+  include Find_pop_events
   before_action :authenticate_admin, only: [:admin_top]
 
   def top
@@ -6,7 +7,7 @@ class RootsController < ApplicationController
     @search = Event.from_now.ransack(params[:q])
 
     #人気ライブ表示用
-    @pop_events = Event.from_now.select('events.*', 'count(calendar_events.id) AS calendars').left_joins(:calendar_events).group('events.id').limit(10).order('calendars desc')
+    @pop_events = find_pop_events
   end
 
   def admin_top
