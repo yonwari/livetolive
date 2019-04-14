@@ -19,37 +19,37 @@ header.navbar.navbar-fixed-top
                   .header-item
                     span.header-icon
                       <i class="fa fa-user"></i>
-                    p マイページ
+                    p MY PAGE
               li
                 = link_to events_path do
                   .header-item
                     span.header-icon
-                      <i class="fa fa-shopping-cart"></i>
-                    p ライブ情報
+                      <i class="fa fa-search"></i>
+                    p EVENTS
               li data-turbolinks="false"
                 = link_to new_event_path do
                   .header-item
                     span.header-icon
-                      <i class="fa fa-user"></i>
-                    p ライブ新規登録
+                      <i class="fa fa-pencil"></i>
+                    p ADD EVENT
               li
                 = link_to destroy_user_session_path, method: :delete do
                   .header-item
                     span.header-icon
                       <i class="fa fa-sign-out"></i>
-                    p ログアウト
+                    p LOG OUT
               li
                 = link_to inquiries_new_path do
                   .header-item
                     span.header-icon
                       <i class="fa fa-envelope-o"></i>
-                    p お問い合わせ
+                    p CONTACT
           - else
               li
                 = link_to events_path do
                   .header-item
                     span.header-icon
-                      <i class="fa fa-shopping-cart"></i>
+                      <i class="fa fa-search"></i>
                     p ライブ情報
               li
                 = link_to new_user_registration_path do
