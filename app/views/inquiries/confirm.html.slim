@@ -1,0 +1,23 @@
+.inquiry-background
+  .row
+    .inquiries.col-xs-4.col-xs-offset-4
+      .top-message
+        h2 メッセージ確認
+        p お問い合わせ内容をご確認ください。
+      = form_with model: @inquiry, url: thanks_path, local: true do |f|
+        .form-group.center-block
+          strong お名前
+          = f.hidden_field :name
+          p = @inquiry.name
+        .form-group.center-block
+          strong メールアドレス
+          = f.hidden_field :email
+          p = @inquiry.email
+        .form-group.center-block
+          strong お問い合わせ内容
+          = f.hidden_field :message
+          p = @inquiry.message
+        .form-group.center-block
+          .inquiry-submit
+            = f.submit '戻る', class:"btn btn-default center-block submit"
+            = f.submit "送信する", class:"btn btn-primary center-block submit"
