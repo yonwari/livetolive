@@ -99,6 +99,26 @@
   text-align: center;
 }
 
+.event_image { position: relative; }
+.today_label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(134, 29, 29);
+  color: white;
+  padding: 3px;
+  font-size: 20px;
+  border: 1px solid gray;
+}
+.tomorrow_label {
+  @extend .today_label;
+  background-color: rgb(221, 151, 0);
+}
+.close_label {
+  @extend .today_label;
+  background-color: rgb(61, 61, 255);
+}
+
 // クリックアイコン系
 .click_events {
   display: flex;

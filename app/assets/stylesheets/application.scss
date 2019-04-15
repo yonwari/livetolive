@@ -47,8 +47,9 @@ header {
 		color: rgb(155, 0, 0);
 	}
 }
-.notice{
-	color:green;
+#flash_message {
+	background-color:rgb(140, 255, 188);
+	text-align: center;
 }
 #error-explanation{
 	color:red;
