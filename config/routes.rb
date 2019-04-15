@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   get 'place/search' => 'places#search'
   resources :comedians, except: [:destroy]
   get 'inquiries/new'
-  get 'inquiries/confirm'
   post 'inquiries/confirm' => 'inquiries#confirm'
-  get 'inquiries/thanks'
-  get  'new' =>'inquiries#new'
   post 'thanks' => 'inquiries#thanks'
 
   # 開発環境メール確認用

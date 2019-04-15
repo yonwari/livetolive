@@ -1,0 +1,18 @@
+.inquiry-background
+  .row
+    .inquiries.col-xs-4.col-xs-offset-4
+      .top-message
+        h2 お問い合わせフォーム
+        p お問い合わせ内容をご入力ください。
+      = form_with model: @inquiry, url: { action: :confirm }, local:true do |f|
+        .form-group
+          = f.label :name, "お名前"
+          = f.text_field :name, class: "form-control ", placeholder:"例：山田太郎"
+        .form-group
+          = f.label :email, "メールアドレス"
+          = f.text_field :email, class: "form-control", placeholder:"例：example@aaa.com"
+        .form-group
+          = f.label :message, "お問い合わせ内容"
+          = f.text_area :message, class: "form-control", placeholder:"お問い合わせ内容"
+        .form-group
+          = f.submit "確認", class:"btn btn-primary center-block"
