@@ -18,4 +18,9 @@ RSpec.describe Inquiry, type: :model do
     inquiry = FactoryBot.build(:inquiry, message: nil)
     expect(inquiry).not_to be_valid
   end
+  it "形式の異なるメールアドレスなら無効になること" do
+    inquiry = FactoryBot.build(:inquiry, email:"hanako")
+    inquiry.valid?
+    expect(inquiry.errors[:email]).to include("は不正な値です")
+  end
 end
