@@ -1,35 +1,4 @@
-javascript:
-    function initMap() {
-
-        var test ={lat: #{@place.latitude} , lng: #{@place.longitude} };
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: test
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var contentString = "場所：#{@place.address}";
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-
-        var marker = new google.maps.Marker({
-            position:test,
-            map: map,
-            title: contentString
-        });
-
-        marker.addListener('click', function() {
-            infowindow.open(map, marker);
-        });
-    }
-
-/ API読み込み
-script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initMap"}
-
-
-body.admin-body
+.admin-body
   .container
     .head_title.center-block
       h1 会場情報
@@ -49,3 +18,7 @@ body.admin-body
               td = link_to "編集", edit_place_path(@place), class:"btn btn-info"
   #map
   = link_to "戻る", places_path, class:"btn btn-info"
+
+
+/ API読み込み
+script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initPlaceMap"}

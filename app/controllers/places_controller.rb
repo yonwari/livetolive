@@ -54,29 +54,18 @@ class PlacesController < ApplicationController
   end
 
   def search
-    # 現在地取得
-    @latitude = params[:latitude]
-    @longitude = params[:longitude]
-    @places = Place.all.within(3, origin: [@latitude, @longitude])
-
+    # 現在地から3km以内の会場を取得
+    gon.latitude = params[:latitude]
+    gon.longitude = params[:longitude]
+    @places = Place.all.within(3, origin: [gon.latitude, gon.longitude])
+    gon.places = @places  #JS引き渡し用
     @key = Rails.application.credentials.api_key[:google]
-    #MAP整形用
-    #場所情報を配列にまとめる
-    if @places.count > 0
-      @near_places = [] #MAPでJS引き渡し用の配列
-      @places.each do |place|
-        @near_places << [place.place_name,
-                        place.address,
-                        place.latitude,
-                        place.longitude]
-      end
-      @near_places_j = @near_places.to_json.html_safe #JS引き渡しのため整形
-    end
   end
 
   def show
     @key = Rails.application.credentials.api_key[:google]
     @place = Place.find(params[:id])
+    gon.place = @place
   end
 
   protected
