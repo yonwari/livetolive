@@ -28,6 +28,13 @@ class Event < ApplicationRecord
     calendar_events.where(user_id: user.id).exists?
   end
 
+  # 開催日までの日数を返却
+  def from_now_to_start_date
+    today = Date.today
+    start = Date.parse(self.start_date.to_s)
+    start - today
+  end
+
   # 芸人タグ付け用
     #DBへのコミット直前に実施する
     after_create do
@@ -41,8 +48,8 @@ class Event < ApplicationRecord
         end
       end
     end
-   
-    before_update do 
+
+    before_update do
       event = Event.find_by(id: self.id)
       event.comedians.clear
       if event.comedianlist.present?

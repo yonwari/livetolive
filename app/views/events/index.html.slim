@@ -9,6 +9,14 @@
         - @result.each do |event|
           .event_list
             .event_image
+              / 開催日までの日数で表示を制御
+              - if event.from_now_to_start_date == 0
+                span.today_label 本日開催
+              - elsif event.from_now_to_start_date == 1
+                span.tomorrow_label 明日開催
+              - elsif event.from_now_to_start_date < 4
+                span.close_label 近日開催
+
               = link_to event_path(event) do
                 - if event.event_image.attached?
                   = image_tag event.event_image, class:"event-image", size: '315x415'
