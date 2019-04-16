@@ -16,9 +16,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @key = Rails.application.credentials.api_key[:google] #map表示用
     @place = @event.place
+    # 近くのカフェ表示用
     gon.place = @place
+    # 会場MAP形成JS引き渡し用
+    gon.places = []
+    gon.places << @place
   end
 
   def new

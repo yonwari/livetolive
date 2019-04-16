@@ -1,5 +1,5 @@
 $(function(){
-  // モーダル表示用
+  // ユーザー編集モーダル表示用
   $('#edit-user').on('click',function(){
     $('#overlay,#result').fadeIn();
   });

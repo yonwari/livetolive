@@ -9,20 +9,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @key = Rails.application.credentials.api_key[:google] #map表示用
-    @my_events = @user.events
     @today_events = @user.events.today.recent
 
     #場所情報を配列にまとめる
-    @my_places = [] #MAPでJS引き渡し用の配列
+    gon.places = []
     @today_events.each do |event|
-      @my_places << [event.place.place_name,
-                      event.place.address,
-                      event.place.latitude, 
-                      event.place.longitude]
+      gon.places << event.place
     end
-    @my_places_j = @my_places.to_json.html_safe #JS引き渡しのため整形
-    gon.user_id = current_user.id # カレンダー表示jbuilder用
+
+    #カレンダー表示jbuilder用
+    @my_events = @user.events
+    gon.user_id = current_user.id
 
     #お気に入りリスト表示用
     favorites = @user.favorites
@@ -31,7 +28,6 @@ class UsersController < ApplicationController
       @my_favorites << fav.event
     end
     @my_favorites = Kaminari.paginate_array(@my_favorites).page(params[:page]).per(5) #kaminari用
-
   end
 
   def edit
