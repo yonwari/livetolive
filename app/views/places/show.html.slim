@@ -11,10 +11,10 @@
             th 経度
         tbody
             tr
-              td =@place.place_name
-              td =@place.address
-              td =@place.latitude
-              td =@place.longitude
+              td = @place.place_name
+              td = @place.address
+              td = @place.latitude
+              td = @place.longitude
               td = link_to "編集", edit_place_path(@place), class:"btn btn-info"
   #map
   = link_to "戻る", places_path, class:"btn btn-info"

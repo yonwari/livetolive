@@ -1,10 +1,10 @@
 // ライブ会場詳細ページ用
 function initPlaceMap() {
 
-  var test ={lat: gon.place["latitude"] , lng: gon.place["longitude"] };
+  var point ={lat: gon.place["latitude"] , lng: gon.place["longitude"] };
   var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 16,
-      center: test
+      center: point
   });
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
@@ -15,7 +15,7 @@ function initPlaceMap() {
   });
 
   var marker = new google.maps.Marker({
-      position:test,
+      position:point,
       map: map,
       title: contentString
   });
