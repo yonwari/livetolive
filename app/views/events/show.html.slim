@@ -49,11 +49,8 @@
         p 住所
         .event_map_info
           = @place.address
-      #map
+      #map.map
     #near_cafe
       .head_title.center-block
         h1 ひまつぶしカフェ
       #nearmap
-
-/ API読み込み
-script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initEventMap&libraries=places"}

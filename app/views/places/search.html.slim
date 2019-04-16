@@ -19,7 +19,4 @@
                   td = link_to "ここのライブを探す", { controller: :events, action: :index, q:{ place_place_name_eq: :"#{place.place_name}" }}, class:"btn btn-default"
       - else
         h4 近くにライブ会場はありません
-    #near_map
-
-/ API読み込み
-script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initSearchMap"}
+    #near_map.map

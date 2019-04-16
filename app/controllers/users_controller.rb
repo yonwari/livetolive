@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @key = Rails.application.credentials.api_key[:google] #map表示用
     @today_events = @user.events.today.recent
 
     #場所情報を配列にまとめる

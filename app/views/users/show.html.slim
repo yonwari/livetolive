@@ -42,7 +42,7 @@
                           td
           - else
             p 本日登録したイベントはありません
-        #my_map
+        #my_map.map
     #schedule_container
       .head_title.center-block
         h2 スケジュール
@@ -94,6 +94,3 @@
               span.required *
               = f.text_field :email, class: 'form-control', required: true, type: "email"
             = f.submit "更新", class: 'btn btn-info'
-
-/ API読み込み
-script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{@key}&callback=initMyMap"}

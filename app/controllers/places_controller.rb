@@ -59,13 +59,13 @@ class PlacesController < ApplicationController
     gon.longitude = params[:longitude]
     @places = Place.all.within(3, origin: [gon.latitude, gon.longitude])
     gon.places = @places  #JS引き渡し用
-    @key = Rails.application.credentials.api_key[:google]
   end
 
   def show
-    @key = Rails.application.credentials.api_key[:google]
     @place = Place.find(params[:id])
-    gon.place = @place
+    # MAP形成JS引き渡し用
+    gon.places = []
+    gon.places << @place
   end
 
   protected
