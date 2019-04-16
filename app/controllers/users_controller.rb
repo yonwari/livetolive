@@ -10,12 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @today_events = @user.events.today.recent
-
-    #場所情報を配列にまとめる
-    gon.places = []
-    @today_events.each do |event|
-      gon.places << event.place
-    end
+    #場所情報を配列にまとめてJSに渡す
+    gon.places = @today_events.map(&:place)
 
     #カレンダー表示jbuilder用
     @my_events = @user.events
@@ -23,10 +19,7 @@ class UsersController < ApplicationController
 
     #お気に入りリスト表示用
     favorites = @user.favorites
-    @my_favorites = []
-    favorites.each do |fav|
-      @my_favorites << fav.event
-    end
+    @my_favorites = favorites.map(&:event)
     @my_favorites = Kaminari.paginate_array(@my_favorites).page(params[:page]).per(5) #kaminari用
   end
 
