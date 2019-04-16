@@ -24,10 +24,23 @@
 document.addEventListener('turbolinks:load', function() {
   new Swiper('.popular_lives', {
     loop: true,
-    slidesPerView: 5,
-    //breackpoint
+    slidesPerView: 4,
     spaceBetween: 0,
-    initialSlide: 1,
+    initialSlide: 0,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 0
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 0
+      },
+      425: {
+        slidesPerView: 1,
+        spaceBetween: 0
+      }
+    },
     autoplay: {
       speed: 2000,
       disableOnInteraction: true
