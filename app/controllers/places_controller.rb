@@ -64,8 +64,7 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     # MAP形成JS引き渡し用
-    gon.places = []
-    gon.places << @place
+    gon.places = [@place]
   end
 
   protected

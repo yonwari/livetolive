@@ -85,10 +85,10 @@ gem 'devise-i18n-views'
 gem 'rails-i18n', '~> 5.1'
 gem 'select2-rails'
 gem 'aws-sdk-s3', require: false
-gem 'dotenv'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
 gem 'json'
 gem 'gon'
 gem 'geokit-rails'
 gem 'whenever', :require => false
+gem 'omniauth-google-oauth2'

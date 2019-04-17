@@ -20,8 +20,7 @@ class EventsController < ApplicationController
     # 近くのカフェ表示用
     gon.place = @place
     # 会場MAP形成JS引き渡し用
-    gon.places = []
-    gon.places << @place
+    gon.places = [@place]
   end
 
   def new

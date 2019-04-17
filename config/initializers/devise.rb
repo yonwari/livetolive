@@ -90,6 +90,10 @@ Devise.setup do |config|
   # passing skip: :sessions to `devise_for` in your config/routes.rb
   config.skip_session_storage = [:http_auth]
 
+  # googleアカウントログイン用
+  config.omniauth :google_oauth2, Rails.application.credentials.auth[:google_client_id], Rails.application.credentials.auth[:google_client_secret]
+  OmniAuth.config.logger = Rails.logger if Rails.env.development? # debug用
+
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
   # requests for sign in and sign up, you need to get a new CSRF token
