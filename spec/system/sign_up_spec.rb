@@ -38,5 +38,5 @@ def sign_up_with(email, user_name, password, confirmation)
   fill_in "ユーザー名", with: user_name
   fill_in "パスワード", with: password
   fill_in "確認用パスワード", with: confirmation
-  click_button "Sign up"
+  click_button "登録する"
 end
