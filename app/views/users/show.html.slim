@@ -3,8 +3,7 @@
     #my_top_container
       .head_wrap
         .head_title
-          h2 = @user.user_name
-          h2 さんのページ
+          h2 = "#{@user.user_name}さんのページ"
         .my_link_menu
           .link_content
             = link_to :action => "show", :anchor => "favorites_container" do

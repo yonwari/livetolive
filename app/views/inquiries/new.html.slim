@@ -7,12 +7,15 @@
       = form_with model: @inquiry, url: { action: :confirm }, local:true do |f|
         .form-group
           = f.label :name, "お名前"
-          = f.text_field :name, class: "form-control ", placeholder:"例：山田太郎"
+          span.required *
+          = f.text_field :name, class: "form-control ", placeholder:"例：山田太郎", required: true
         .form-group
           = f.label :email, "メールアドレス"
-          = f.text_field :email, class: "form-control", placeholder:"例：example@aaa.com"
+          span.required *
+          = f.text_field :email, class: "form-control", placeholder:"例：example@aaa.com", required: true
         .form-group
           = f.label :message, "お問い合わせ内容"
-          = f.text_area :message, class: "form-control", placeholder:"お問い合わせ内容"
+          span.required *
+          = f.text_area :message, class: "form-control", placeholder:"お問い合わせ内容", required: true
         .form-group
           = f.submit "確認", class:"btn btn-primary center-block"

@@ -14,9 +14,11 @@
         =form_with model: @place, local: true do |f|
           .form-group.form-inline
             = f.label :place_name, "会場名"
-            = f.text_field :place_name, class: 'form-control'
+            span.required *
+            = f.text_field :place_name, class: 'form-control', required: true, placeholder:"例：ルミネTHEよしもと"
           .form-group.form-inline
             = f.label :address, "住所"
-            = f.text_field :address, class: 'form-control'
+            span.required *
+            = f.text_field :address, class: 'form-control', required: true, placeholder:"例：東京都新宿区新宿３丁目３８−２ ルミネ27F"
           = f.submit "登録", class: 'btn btn-info'
           = link_to "戻る", places_path, class:"btn btn-default"
