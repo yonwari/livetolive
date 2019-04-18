@@ -1,2 +1,0 @@
-class ComediansController < ApplicationController
-end
