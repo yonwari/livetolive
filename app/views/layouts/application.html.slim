@@ -8,10 +8,11 @@ html
     = Gon::Base.render_data
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     meta {name="viewport" content="width=device-width,initial-scale=1.0"}
-    script {async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{Rails.application.credentials.api_key[:google]}&libraries=places"}
+    script {src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{Rails.application.credentials.api_key[:google]}&libraries=places"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     link href="https://fonts.googleapis.com/css?family=Kosugi+Maru" rel="stylesheet"
   body
+    = include_gon
     = render partial: 'layouts/header'
     #flash_message
       h4 = flash[:notice]
