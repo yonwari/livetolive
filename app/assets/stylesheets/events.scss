@@ -187,3 +187,14 @@
   display: flex;
   justify-content: center;
 }
+
+// テキストカウント用
+.text_count_ng {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.text_count_ok {
+  color: #000000;
+  font-weight: normal;
+}
