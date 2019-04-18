@@ -95,6 +95,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -296,7 +297,8 @@ yarn-debug.log*
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -325,5 +327,3 @@ Temporary Items
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-

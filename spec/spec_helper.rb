@@ -15,6 +15,10 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'capybara/rspec'
+require 'simplecov'
+SimpleCov.start do
+  add_filter ['vendor/', 'spec/', 'app/channels/application_cable/', 'app/controllers/users/', 'app/jobs/']
+end
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
