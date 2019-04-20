@@ -18,12 +18,12 @@ class Place < ApplicationRecord
       uri = URI.parse("https://maps.googleapis.com/maps/api/geocode/json?address=#{api_address}&key=#{key}")
       json = Net::HTTP.get(uri)
       result = JSON.parse(json, {:symbolize_names => true})
-      
+
       #結果を代入
       self.latitude = result[:results][0][:geometry][:location][:lat]
       self.longitude = result[:results][0][:geometry][:location][:lng]
     rescue => e
-      logger.error e 
+      logger.error e
     end
   end
 end
