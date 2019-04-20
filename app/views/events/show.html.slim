@@ -41,6 +41,9 @@
             .share_button
               a {href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Live to Liveでライブをはしごしよう！" data-hashtags="livetolive" data-lang="ja" data-show-count="false"}Tweet
               script {async src="https://platform.twitter.com/widgets.js" charset="utf-8"}
+            - if user_signed_in? && current_user.admin?
+                .danger_button
+                  = link_to "ライブ削除", event_path, method: :delete, class:"btn btn-danger", data: { confirm: '本当に削除しますか？' }
 
     #event_map
       .head_title.center-block

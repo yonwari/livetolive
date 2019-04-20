@@ -6,12 +6,12 @@
           = render partial: "favorites/favorites", locals: { event: event }
     .click_icon
       = link_to edit_event_path(event) do
-        <i class="fa fa-edit"></i>
-        <p>ライブ編集</p>
+        i.fa.fa-edit
+        p ライブ編集
     .click_icon
       = link_to event.reserve_url, target: :_blank do
-        <i class="fa fa-paperclip"></i>
-        <p>予約ページ</p>
+        i.fa.fa-paperclip
+        p 予約ページ
     .click_icon
       .box_button_calendar
         div id="calendar-button-zone_#{event.id}"

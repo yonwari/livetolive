@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   get '/admin_top', to: 'roots#admin_top'
-  resources :events, except: [:destroy] do
+  resources :events do
     resource :favorites, only: [:create, :destroy]
     resource :calendar_events, only: [:create, :destroy]
   end
