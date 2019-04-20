@@ -30,6 +30,17 @@ describe 'マイページ機能', type: :system do
         expect(page).to have_content "テストライブ"
       end
     end
+    context "お気に入り登録を2回押した時" do
+      before do
+        visit event_path(tomorrow_event)
+        click_link "favorite"
+        click_link "favorite"
+        visit user_path(user)
+      end
+      it "マイページにお気に入り登録したイベントが表示されていない" do
+        expect(page).not_to have_content "明日用ライブ"
+      end
+    end
 
     context "カレンダー登録をした時" do
       context "本日分のライブの時" do
@@ -53,6 +64,17 @@ describe 'マイページ機能', type: :system do
         it "カレンダーのみにライブが追加される" do
           expect(page).to have_content "明日用ライブ"
           expect(page).not_to have_content "渋谷会場"
+        end
+      end
+      context "明日分のライブをカレンダー削除した時" do
+        before do
+          visit event_path(tomorrow_event)
+          click_link "calendaradd"
+          click_link "calendaradd"
+          visit user_path(user)
+        end
+        it "ライブがカレンダーから削除されている" do
+          expect(page).not_to have_content "明日用ライブ"
         end
       end
 

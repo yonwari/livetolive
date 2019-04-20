@@ -73,11 +73,8 @@ describe 'ライブ会場管理機能', type: :system do
       let(:place_name) { '' }
       let(:address) { '' }
 
-      it 'エラーとなる' do
-        within '#error_explanation' do
-          expect(page).to have_content '会場名を入力してください'
-          expect(page).to have_content '住所を入力してください'
-        end
+      it '画面遷移せず新規入力画面のままである' do
+        expect(current_path).to eq(new_place_path)
       end
     end
   end

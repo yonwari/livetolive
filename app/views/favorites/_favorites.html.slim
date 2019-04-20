@@ -1,0 +1,13 @@
+- if user_signed_in?
+  - if event.favorited_by?(current_user)
+    = link_to event_favorites_path(event), method: :delete, remote:true, id:"favorite" do
+      i.fa.fa-heart.delete-icon {aria-hidden="true" style="color: red;"}
+      p お気に入り
+  - else
+    = link_to event_favorites_path(event), method: :post, remote:true, id:"favorite" do
+      i.fa.fa-heart.favorite-icon {aria-hidden="true" style="color: gray;"}
+      p お気に入り
+- else
+    = link_to event_favorites_path(event), method: :delete, remote:true, id:"favorite" do
+      i.fa.fa-heart.delete-icon {aria-hidden="true" style="color: red;"}
+      p お気に入り
