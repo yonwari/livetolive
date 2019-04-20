@@ -86,29 +86,3 @@ input:invalid {
 		color: red;
   }
 }
-
-// TOP
-.explain_header {
-  text-align: center;
-}
-.explain_header_top {
-  text-align: center;
-  h1 {
-    font-size: 50px;
-		margin: 50px;
-		margin-top: 0px;
-		padding-top: 50px;
-  }
-}
-.top_explain_container {
-	background-color: rgb(134, 29, 29);
-	color: white;
-	.head_title {
-		color: black;
-		background-color: white;
-		opacity: 0.5;
-		border: none;
-		height: 80px;
-		h1 {line-height: 80px;}
-	}
-}

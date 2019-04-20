@@ -18,11 +18,80 @@
   margin: 30px 0;
 }
 
+// TOP
+.explain_header {
+  text-align: center;
+}
+.explain_header_top {
+  text-align: center;
+  h1 {
+    font-size: 50px;
+		margin: 50px;
+		margin-top: 0px;
+		padding-top: 50px;
+  }
+}
+.top_explain_container {
+  background-color: rgb(134, 29, 29);
+  padding: 50px 0;
+	color: white;
+	.head_title {
+		color: black;
+		background-color: white;
+		opacity: 0.5;
+		border: none;
+		height: 80px;
+		h1 {line-height: 80px;}
+	}
+}
+
 .events_link {
   display: flex;
   justify-content: center;
   font-size: 40px;
+  a { margin: 30px 0; }
 }
 .popular_lives {
   text-align: center;
+}
+
+.search_by_place_container {
+  background-color: #9ed5de;
+  padding: 50px 0;
+  .head_title {
+		color: black;
+		background-color: white;
+		opacity: 0.5;
+		border: none;
+		height: 80px;
+    h1 {
+      line-height: 80px;
+      margin: 0;
+    }
+    margin: 0 auto;
+	}
+}
+
+.searched_places {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.searched_place {
+  padding: 20px;
+  position: relative;
+}
+
+.area_title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  padding: 3px;
+  font-size: 50px;
+  border: none;
+  text-shadow: 2px 2px 1px black,
+  -2px 2px 1px black,
+  2px -2px 1px black,
+  -2px -2px 1px black;
 }
