@@ -58,6 +58,7 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'spring-commands-rspec'
+  gem 'rubocop'
 end
 
 group :test do
