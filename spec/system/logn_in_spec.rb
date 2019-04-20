@@ -20,6 +20,17 @@ RSpec.feature "Log in", :devise do
       expect(current_path).to eq(new_user_session_path)
     end
   end
+  describe 'ログアウト機能', type: :system do
+    before do
+      @user = FactoryBot.create(:user)
+      sign_in("test1@example.com", "password")
+      click_link 'LOG OUT'
+    end
+    it "正常にログインした後、ログアウトできること" do
+      expect(page).to have_content("ログアウトしました")
+      expect(current_path).to eq(new_user_session_path)
+    end
+  end
 end
 
 def sign_in(email, password)
