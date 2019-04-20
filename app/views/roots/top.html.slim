@@ -20,4 +20,23 @@
     = link_to events_path do
       <i class="fa fa-arrow-right"></i>
       span ライブ一覧へ
-.top_last_container
+.search_by_place_container
+  .head_title.center-block
+    h1 場所から探す
+  .searched_places
+    .searched_place
+      = link_to controller: :events, action: :index, q:{ place_address_cont: :"新宿" } do
+        = image_tag  "img/kabukityo.jpg", size:'320x220'
+        span.area_title 新宿
+    .searched_place
+      = link_to controller: :events, action: :index, q:{ place_address_cont: :"北沢" } do
+        = image_tag  "img/shimokita.jpg", size:'320x220'
+        span.area_title 下北
+    .searched_place
+      = link_to controller: :events, action: :index, q:{ place_address_cont: :"中野" } do
+        = image_tag  "img/nakano.jpg", size:'320x220'
+        span.area_title 中野
+    .searched_place
+      = link_to controller: :events, action: :index, q:{ place_address_cont: :"新宿" } do
+        = image_tag  "img/shibuyakousaten.jpg", size:'320x220'
+        span.area_title 渋谷
