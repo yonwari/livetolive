@@ -13,16 +13,6 @@
         <i class="fa fa-paperclip"></i>
         <p>予約ページ</p>
     .click_icon
-      -if user_signed_in?
-        -if event.calendared_by?(current_user)
-          = link_to event_calendar_events_path(event), method: :delete, remote:true, id:"calendaradd" do
-            <i class="fa fa-calendar delete-calendar" aria-hidden="true"></i>
-            <p>カレンダー登録済</p>
-        -else
-          = link_to event_calendar_events_path(event), method: :post, remote:true, id:"calendaradd" do
-            <i class="fa fa-calendar-plus-o add-calendar" aria-hidden="true"></i>
-            <p>カレンダー追加</p>
-      -else
-          = link_to event_calendar_events_path(event), method: :post, id:"calendaradd" do
-            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-            <p>カレンダー追加</p>
+      .box_button_calendar
+        div id="calendar-button-zone_#{event.id}"
+          = render partial: "calendar_events/calendar_events", locals: { event: event }
