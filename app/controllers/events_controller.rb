@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin, only: [:destroy]
 
   def index
     #複数条件検索用にパラメータ分割
@@ -10,7 +11,6 @@ class EventsController < ApplicationController
         params[:q][:groupings][i] = { event_title_or_comedianlist_or_place_place_name_or_place_address_cont: word }
       end
     end
-
     @search = Event.from_now.ransack(params[:q])
     @result = @search.result.page(params[:page]).per(10).recent
   end
@@ -47,7 +47,16 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
 
+  def destroy
+    if @event.destroy
+      flash[:notice] = "イベント情報を削除しました"
+      redirect_to events_path
+    else
+      flash[:notice] = "イベントの削除に失敗しました"
+      redirect_to @event
+    end
   end
 
   # 共通のセット処理

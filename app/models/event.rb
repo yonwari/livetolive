@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_one_attached :event_image
   has_many :calendar_events, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :event_comedians
+  has_many :event_comedians, dependent: :destroy
   has_many :comedians, through: :event_comedians
   belongs_to :place
 
