@@ -16,6 +16,9 @@ describe 'ユーザー機能', type: :system do
   describe '一覧表示機能' do
     context '管理者でログインしている時' do
       let(:login_user) { admin_user }
+      before do
+        visit users_path
+      end
 
       it 'ユーザー一覧情報が表示される' do
         expect(page).to have_content 'ユーザー管理'
