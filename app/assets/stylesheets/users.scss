@@ -3,26 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .head_title {
-  background-color: white;
   border-radius: 50px;
-  border: 2px solid gray;
+  border: 2px solid white;
   text-align: center;
   width: 30%;
-  margin: 50px;
+	margin: 50px;
+	color: white;
 }
 .my_link_menu {
-  display: flex;
+	display: inline-block;
+}
+
+.todays_header {
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 20px;
+	background-color: rgb(172, 147, 37);
+	border-radius: 5px;
 }
 
 .schedule_table {
-  width: 100%;
+	width: 100%;
+	font-size: 14px;
+	th {
+		text-align: center;
+	}
 }
 
 .mypage_main_contents {
   display: flex;
 }
 
-#my_map { 
+#my_map {
   height: 400px;
   margin-left:auto;
   margin-right:auto;
@@ -31,6 +43,7 @@
 }
 
 #my_top_container {
+	color: white;
   .head_wrap {
     display: flex;
     justify-content: center;
@@ -45,6 +58,27 @@
 
 .arrow {
   text-align: center;
+}
+
+//カレンダー
+#calendar {
+	width: 900px;
+	height: 700px;
+	background-color: antiquewhite;
+	border-radius: 20px;
+	margin-bottom: 100px;
+}
+.fc-sun .fc-day-number {
+	color: red;
+}
+.fc-sat .fc-day-number {
+	color: blue;
+}
+.fc-day-header {
+	background-color: white;
+}
+.fc-day {
+	background-color: antiquewhite;
 }
 
 
@@ -66,9 +100,7 @@
 	top:50%;
 	left:50%;
 	transform:translate(-50%,-50%);
-	border:2px solid black;
-	border-radius:20px;
-	background-color: #AEEA00;
+	background-color: white;
 	display:none;
 	padding:30px;
 	z-index:2
@@ -83,7 +115,7 @@
 	transition:.4s;
 }
 #close:hover{
-	color:#fff;
+	color:rgb(230, 230, 230);
 }
 
 #modal-title {
@@ -96,6 +128,10 @@
 .login_wrapper {
 	display: flex;
 	justify-content: center;
+	margin-top: 20px;
+	label, h2 {
+		color: white;
+	}
 }
 
 .snslogin {
