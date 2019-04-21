@@ -24,7 +24,7 @@
 document.addEventListener('turbolinks:load', () => {
     new Swiper('.popular_lives', {
         loop: true,
-        slidesPerView: 4,
+        slidesPerView: 5,
         spaceBetween: 0,
         initialSlide: 0,
         breakpoints: {
