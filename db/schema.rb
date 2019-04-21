@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_035515) do
+ActiveRecord::Schema.define(version: 2019_04_21_000404) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 2019_04_17_035515) do
   end
 
   create_table "calendar_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_calendar_events_on_event_id"
+    t.index ["user_id"], name: "index_calendar_events_on_user_id"
   end
 
   create_table "comedians", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -48,17 +50,18 @@ ActiveRecord::Schema.define(version: 2019_04_17_035515) do
   end
 
   create_table "event_comedians", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "comedian_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "comedian_id"
+    t.bigint "event_id"
+    t.index ["comedian_id"], name: "index_event_comedians_on_comedian_id"
+    t.index ["event_id"], name: "index_event_comedians_on_event_id"
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "event_title"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer "place_id"
     t.text "explanation"
     t.text "reserve_url"
     t.datetime "open_date"
@@ -66,13 +69,18 @@ ActiveRecord::Schema.define(version: 2019_04_17_035515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comedianlist"
+    t.bigint "place_id"
+    t.index ["event_title"], name: "index_events_on_event_title"
+    t.index ["place_id"], name: "index_events_on_place_id"
   end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_favorites_on_event_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -115,4 +123,11 @@ ActiveRecord::Schema.define(version: 2019_04_17_035515) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "calendar_events", "events"
+  add_foreign_key "calendar_events", "users"
+  add_foreign_key "event_comedians", "comedians"
+  add_foreign_key "event_comedians", "events"
+  add_foreign_key "events", "places"
+  add_foreign_key "favorites", "events"
+  add_foreign_key "favorites", "users"
 end
