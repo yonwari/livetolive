@@ -1,10 +1,10 @@
-.event-body
+.event-body.body_content
   .container
     #event_head
       .head_title.center-block
-        h1= @event.event_title
+        h1 = @event.event_title
       .events_show_container
-        .head_info.col-xs-offset-3
+        .head_info.col-xs-offset-4
           .start_date
             .heading
               h3 開演
@@ -15,29 +15,34 @@
             h3 = @event.place.place_name
         .main_info
           .event_image
-            -if @event.event_image.attached?
+            - if @event.event_image.attached?
               = image_tag @event.event_image, class:"event-image", size: '300x400'
-            -else
+            - else
               = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
           .event_detail_info
             .event_explain
-              = @event.explanation
+              p
+                span 紹介文
+              p = @event.explanation
             .event_moredetails
-              p 出演者
+              p
+                span 出演者
               - if @event.comedianlist.present?
-                = render_with_hashtags(@event.comedianlist)
+                p = render_with_hashtags(@event.comedianlist)
               - else
                 p 出演者情報なし
-              p 開場時間
-              = @event.open_date.strftime('%Y年%m月%d日 %H時%M分')
-              p 閉演予定
-              = @event.end_date.strftime('%Y年%m月%d日 %H時%M分')
+              p
+                span 開場時間
+              p = @event.open_date.strftime('%Y年%m月%d日 %H時%M分')
+              p
+                span 閉演予定
+              p = @event.end_date.strftime('%Y年%m月%d日 %H時%M分')
+            = render partial: 'events/actionicons', locals: { event: @event }
             .caldendar_info
               - if @event.calendar_events.count > 0
-                = "#{@event.calendar_events.count}人のユーザーがカレンダーに登録しています！"
+                p = "#{@event.calendar_events.count}人のユーザーがカレンダーに登録しています！"
               - else
                 p カレンダー登録しているユーザーはいません。
-            = render partial: 'events/actionicons', locals: { event: @event }
             .share_button
               a {href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Live to Liveでライブをはしごしよう！" data-hashtags="livetolive" data-lang="ja" data-show-count="false"}Tweet
               script {async src="https://platform.twitter.com/widgets.js" charset="utf-8"}
@@ -48,12 +53,14 @@
     #event_map
       .head_title.center-block
         h1.event_map_title = @place.place_name
-      .events_container
-        p 住所
+      .event_info_container
+        h4 住所：
         .event_map_info
-          = @place.address
+          h4 = @place.address
       #map.map
     #near_cafe
       .head_title.center-block
         h1 ひまつぶしカフェ
+      .nearcafe_text
+        h4 会場から半径500m以内のカフェ一覧
       #nearmap
