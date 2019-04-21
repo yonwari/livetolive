@@ -1,20 +1,21 @@
-.admin-body
+.admin-body.body_content
   .container
     .head_title.center-block
       h1 会場情報
-      table.table
-        thead
+    table.table.placeadmin_table
+      thead
+        tr
+          th 会場名
+          th 住所
+          th 緯度
+          th 経度
+          th
+      tbody
           tr
-            th 会場名
-            th 住所
-            th 緯度
-            th 経度
-        tbody
-            tr
-              td = @place.place_name
-              td = @place.address
-              td = @place.latitude
-              td = @place.longitude
-              td = link_to "編集", edit_place_path(@place), class:"btn btn-info"
+            td = @place.place_name
+            td = @place.address
+            td = @place.latitude
+            td = @place.longitude
+            td = link_to "編集", edit_place_path(@place), class:"btn btn-info"
   #map.map
   = link_to "戻る", places_path, class:"btn btn-info"

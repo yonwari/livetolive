@@ -1,23 +1,14 @@
-.users_body
+.users_body.body_content
   .container
     #my_top_container
       .head_wrap
         .head_title
           h2 = "#{@user.user_name}さんのページ"
-        .my_link_menu
-          .link_content
-            = link_to :action => "show", :anchor => "favorites_container" do
-              <i class="fa fa-heart"></i>
-              <span>お気に入りリストへ</span>
-          .link_content#edit-user
-            / = link_to edit_user_path(@user) do
-            <i class="fa fa-user"></i>
-            <span>ユーザー情報編集</span>
       .mypage_main_contents
         .todays_event_container
           .todays_header
             = Date.today.strftime('%Y年%m月%d日')
-            <span>の予定</span>
+            span の予定
           - if @today_events.count > 0
             .schedule_table
               table.table
@@ -26,26 +17,38 @@
                     th 開演時間
                     th ライブ名
                     th ライブ会場
+                    th
                 tbody
                     - @today_events.each_with_index do |my_event, count|
                       tr
-                        td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
+                        td = my_event.start_date.strftime('%H:%M')
                         td = link_to my_event.event_title, my_event
                         td = my_event.place.place_name
-                        td = link_to "経路を調べる", "https://www.google.com/maps/dir/?api=1&destination=#{my_event.place.latitude},#{my_event.place.longitude}", target: "_blank"
+                        td = link_to "経路を調べる", "https://www.google.com/maps/dir/?api=1&destination=#{my_event.place.latitude},#{my_event.place.longitude}", target: "_blank", class:"btn btn-default"
                       - if count != @today_events.length-1
                         tr
                           td
-                          td.arrow ↓
                           td
+                          td
+                            | ...
+                            = image_tag 'img/walkingman.png', class:"walkingman", size:"30x30"
+                            | ...
                           td
           - else
             p 本日登録したイベントはありません
         #my_map.map
+      .my_link_menu_wrapper
+        .my_link_menu
+          .link_content.btn.btn-default
+              i.fa.fa-heart
+              a href="#favorites_container" お気に入りリストへ
+          .link_content#edit-user.btn.btn-default
+            i.fa.fa-user
+            span ユーザー情報編集
     #schedule_container
       .head_title.center-block
         h2 スケジュール
-      #calendar
+      #calendar.center-block
     #favorites_container
       .head_title.center-block
         h2 お気に入りリスト
@@ -56,25 +59,26 @@
           - @my_favorites.each do |event|
             .event_list
               .event_image
-                -if event.event_image.attached?
+                - if event.event_image.attached?
                   = link_to event_path(event) do
                     = image_tag event.event_image, class:"event-image", size: '300x400'
-                -else
+                - else
                   = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
               .event_info
                 .event_start
-                  p= event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
-                h2.event_title= link_to event.event_title, event_path(event)
-                .event_info_detail
-                  p 会場
-                  p= event.place.place_name
-                  p 出演者
-                  -if event.comedianlist.present?
-                    = render_with_hashtags(event.comedianlist)
-                  -else
-                    p 出演者情報なし
-                / アクションアイコン呼び出し
-                = render partial: 'events/actionicons', locals: { event: event }
+                  p = event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
+                .event_info_detail_wrapper
+                  h2.event_title= link_to event.event_title, event_path(event)
+                  .event_info_detail
+                    span 会場
+                    p = event.place.place_name
+                    span 出演者
+                    - if event.comedianlist.present?
+                      p = render_with_hashtags(event.comedianlist)
+                    - else
+                      p 出演者情報なし
+                  / アクションアイコン呼び出し
+                  = render partial: 'events/actionicons', locals: { event: event }
           .paginate = paginate @my_favorites
 
 
@@ -83,7 +87,7 @@
       h2#modal-title ユーザー情報編集
       i.fa.fa-close#close
       .user-form
-          =form_with model: @user, local: true do |f|
+          = form_with model: @user, local: true do |f|
             .form-group.form-inline
               = f.label :user_name, "ユーザー名"
               span.required *

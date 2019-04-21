@@ -52,7 +52,7 @@ const initCafe = () => {
             center: event_place,
             zoom: 15
         });
-        //指定位置の半径1000m内のカフェを検索
+        //指定位置の半径500m内のカフェを検索
         const request = {
             location: event_place,
             radius: '500',

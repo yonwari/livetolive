@@ -1,4 +1,4 @@
-.inquiry-background
+.inquiry-background.body_content
   .row
     .inquiries.col-xs-4.col-xs-offset-4
       .top-message
@@ -8,16 +8,16 @@
         .form-group.center-block
           strong お名前
           = f.hidden_field :name
-          p = @inquiry.name
+          h4 = @inquiry.name
         .form-group.center-block
           strong メールアドレス
           = f.hidden_field :email
-          p = @inquiry.email
+          h4 = @inquiry.email
         .form-group.center-block
           strong お問い合わせ内容
           = f.hidden_field :message
-          p = @inquiry.message
+          h4 = @inquiry.message
         .form-group.center-block
           .inquiry-submit
             = f.submit '戻る', class:"btn btn-default center-block submit"
-            = f.submit "送信する", class:"btn btn-primary center-block submit"
+            = f.submit "送信する", class:"btn btn-info center-block submit"

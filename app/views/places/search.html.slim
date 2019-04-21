@@ -1,11 +1,11 @@
-.search_result_container
+.search_result_container.body_content
   .head_title.center-block
     h1 近くの会場を探す
   .near_container
     .near_place_list
       h2 半径３km以内の会場
       - if @places.count > 0
-        table
+        table.table
           thead
             tr
               th 会場名

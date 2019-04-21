@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.admin-body {
-  background-color: aliceblue;
-}
 
 .admin_container {
   background-color: white;
@@ -17,10 +14,16 @@
 .admin_link {
   margin: 30px 0;
 }
+#new_button a {
+  margin: 0 0 20px auto;
+  width: 200px;
+}
 
 // TOP
 .explain_header {
   text-align: center;
+  border-bottom: 3px dotted white;
+  padding-bottom: 70px;
 }
 .explain_header_top {
   text-align: center;
@@ -32,9 +35,8 @@
   }
 }
 .top_explain_container {
-  background-color: rgb(134, 29, 29);
   padding: 50px 0;
-	color: white;
+  color: white;
 	.head_title {
 		color: black;
 		background-color: white;
@@ -42,7 +44,8 @@
 		border: none;
 		height: 80px;
 		h1 {line-height: 80px;}
-	}
+  }
+  border-bottom: 3px dotted white;
 }
 
 .events_link {
@@ -55,8 +58,40 @@
   text-align: center;
 }
 
+// swiperにカーソルを合わせると拡大
+.swiper-slide {
+  overflow: hidden;
+  background: #000;
+}
+.swiper-slide img {
+	display: block;
+	transition-duration: 0.3s;
+}
+.swiper-slide img:hover {
+	transform: scale(1.1);
+  transition-duration: 0.3s;
+  opacity: 0.6;
+}
+// 場所別検索にカーソルを合わせると拡大
+.searched_places {
+  background-color: #000;
+  margin: 40px 0;
+}
+.searched_place {
+  overflow: hidden;
+  background: #000;
+}
+.searched_place img {
+	display: block;
+	transition-duration: 0.3s;
+}
+.searched_place img:hover {
+	transform: scale(1.1);
+  transition-duration: 0.3s;
+  opacity: 0.6;
+}
+
 .search_by_place_container {
-  background-color: #9ed5de;
   padding: 50px 0;
   .head_title {
 		color: black;
