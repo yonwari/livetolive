@@ -21,18 +21,18 @@
                 tbody
                     - @today_events.each_with_index do |my_event, count|
                       tr
-                        td = my_event.start_date.strftime('%Y年%m月%d日 %H:%M')
+                        td = my_event.start_date.strftime('%H:%M')
                         td = link_to my_event.event_title, my_event
                         td = my_event.place.place_name
                         td = link_to "経路を調べる", "https://www.google.com/maps/dir/?api=1&destination=#{my_event.place.latitude},#{my_event.place.longitude}", target: "_blank", class:"btn btn-default"
                       - if count != @today_events.length-1
                         tr
                           td
-                          td.arrow
+                          td
+                          td
                             | ...
                             = image_tag 'img/walkingman.png', class:"walkingman", size:"30x30"
                             | ...
-                          td
                           td
           - else
             p 本日登録したイベントはありません
