@@ -24,10 +24,10 @@ $(document).on('turbolinks:load',function(){
     });
 });
 
-//テキストカウント用
-$(document).on('turbolinks:load',function(){
-    let check = $(".count").text($("#text_count").val());
 
+$(document).on('turbolinks:load',function(){
+    //テキストカウント用
+    let check = $(".count").text($("#text_count").val());
     if(check.length){
         $(".count").text($("#text_count").val().length);
         $("#text_count").on("keydown keyup keypress change",function(){
@@ -41,4 +41,12 @@ $(document).on('turbolinks:load',function(){
             }
         });
     }
+
+    // 新規追加におけるフォーム自動補完
+    // 開場時間に合わせて開演、終演時間が補完される
+    $(".event_new_container #open_date_form").one("blur", function(){
+        const open_date = $(this).val();
+        $("#start_date_form").val(open_date);
+        $("#end_date_form").val(open_date);
+    });
 });
