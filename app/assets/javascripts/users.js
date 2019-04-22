@@ -9,4 +9,9 @@ $(document).on('turbolinks:load',function(){
     $('#result').on('click', function(e){
         e.stopPropagation();
     });
+
+    // お気に入りまでのスクロール用
+    $('#to_favs').on('click', function(){
+        $("html,body").animate({scrollTop:$('#favorites_container').offset().top});
+    });
 });
