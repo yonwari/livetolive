@@ -131,6 +131,10 @@
   background-color: rgb(61, 61, 255);
 }
 
+.events_container h2 {
+  color: white;
+}
+
 // クリックアイコン系
 .click_events {
   display: flex;
@@ -196,6 +200,9 @@
 
 #event_head, #event_map, #near_cafe {
   color: white;
+}
+#map {
+  color: black;
 }
 #nearmap {
   color: black;
