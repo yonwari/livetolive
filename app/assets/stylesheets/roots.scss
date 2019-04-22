@@ -130,3 +130,10 @@
   2px -2px 1px black,
   -2px -2px 1px black;
 }
+
+// スクロールでfadeinする用
+.fadein {
+  opacity : 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}

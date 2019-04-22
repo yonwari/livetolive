@@ -63,17 +63,28 @@ document.addEventListener('turbolinks:load', () => {
     });
 
     // 上まで戻るボタン用
-    $(function() {
-      $('#back_to_top a').on('click',function(){
+    $('#back_to_top a').on('click',function(){
         $('body, html').animate({
-          scrollTop:0
+            scrollTop:0
         }, 800);
-          return false;
-      });
+            return false;
+    });
+    // スクロールすると上まで戻るボタン可視化
+    $(window).scroll(function () {
+        $("#back_to_top").fadeIn("slow");
     });
 
-    $(window).scroll(function () {
-      $("#back_to_top").fadeIn("slow");
+    // スクロールでTOP項目をfadeinする
+    $(window).scroll(function (){
+        $('.fadein').each(function(){
+            var targetElement = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > targetElement - windowHeight + 200){
+                $(this).css('opacity','1');
+                $(this).css('transform','translateY(0)');
+            }
+        });
     });
 });
 

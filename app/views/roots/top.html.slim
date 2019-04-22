@@ -5,26 +5,27 @@
       - 3.times do
         = image_tag 'img/walkingman.png', class:"walkingman"
       h1 はしごライフの強い味方。
-    .explain_header
+    .explain_header.fadein
       h4 ライブのはしごは、時間との闘いである。
       h4 Live to Liveは、忙しいあなたのライブライフをサポートします。
       h4 ライブの予定管理から当日の経路検索まで、すべてお任せください。
-    .head_title.center-block.head_top
-      h1 人気ライブ TOP10
-    .popular_lives.swiper-container
-      .swiper-wrapper
-        - @pop_events.each do |event|
-          .swiper-slide
-            = link_to event_path(event) do
-              - if event.event_image.attached?
-                = image_tag event.event_image, class:"slideimg", size: '300x400'
-              - else
-                = image_tag 'img/no_image.jpg', class:"slideimg", size:'300x400'
-    .events_link
-      = link_to events_path do
-        i.fa.fa-arrow-right
-        span ライブ一覧へ
-  .search_by_place_container
+    .popular_lives_wrapper.fadein
+      .head_title.center-block.head_top
+        h1 人気ライブ TOP10
+      .popular_lives.swiper-container
+        .swiper-wrapper
+          - @pop_events.each do |event|
+            .swiper-slide
+              = link_to event_path(event) do
+                - if event.event_image.attached?
+                  = image_tag event.event_image, class:"slideimg", size: '300x400'
+                - else
+                  = image_tag 'img/no_image.jpg', class:"slideimg", size:'300x400'
+      .events_link
+        = link_to events_path do
+          i.fa.fa-arrow-right
+          span ライブ一覧へ
+  .search_by_place_container.fadein
     .head_title.center-block
       h1 場所から探す
     .searched_places
