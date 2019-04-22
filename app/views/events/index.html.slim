@@ -42,3 +42,6 @@
     .paginate
       h4= page_entries_info(@result)
       h4= paginate @result
+
+/ 上まで戻るボタン
+= render = render partial: 'layouts/back_to_top'

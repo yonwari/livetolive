@@ -61,6 +61,20 @@ document.addEventListener('turbolinks:load', () => {
         animation: 'random',
         animationDuration: 10000,
     });
+
+    // 上まで戻るボタン用
+    $(function() {
+      $('#back_to_top a').on('click',function(){
+        $('body, html').animate({
+          scrollTop:0
+        }, 800);
+          return false;
+      });
+    });
+
+    $(window).scroll(function () {
+      $("#back_to_top").fadeIn("slow");
+    });
 });
 
 

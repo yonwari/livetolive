@@ -255,3 +255,13 @@
   color: white;
   font-weight: normal;
 }
+
+// 上まで戻るボタン
+#back_to_top {
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 50px;
+  a { color: white; }
+}
