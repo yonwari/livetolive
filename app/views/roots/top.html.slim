@@ -2,9 +2,8 @@
 .root_container
   .top_explain_container
     .explain_header_top
-      = image_tag 'img/walkingman.png', class:"walkingman"
-      = image_tag 'img/walkingman.png', class:"walkingman"
-      = image_tag 'img/walkingman.png', class:"walkingman"
+      - 3.times do
+        = image_tag 'img/walkingman.png', class:"walkingman"
       h1 はしごライフの強い味方。
     .explain_header
       h4 ライブのはしごは、時間との闘いである。
