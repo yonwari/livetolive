@@ -57,6 +57,10 @@
 }
 
 // イベント一覧
+.none_result {
+  color: white;
+  text-align: center;
+}
 .event_list {
   display: flex;
   justify-content: center;
@@ -131,6 +135,10 @@
   background-color: rgb(61, 61, 255);
 }
 
+.events_container h2 {
+  color: white;
+}
+
 // クリックアイコン系
 .click_events {
   display: flex;
@@ -197,6 +205,12 @@
 #event_head, #event_map, #near_cafe {
   color: white;
 }
+#map {
+  color: black;
+}
+#nearmap {
+  color: black;
+}
 .nearcafe_text {
   margin-bottom: 20px;
   display: flex;
@@ -244,4 +258,66 @@
 .text_count_ok {
   color: white;
   font-weight: normal;
+}
+
+// 上まで戻るボタン
+#back_to_top {
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 50px;
+  a { color: white; }
+}
+
+
+// 無限スクロール用にページネーションを隠す
+.events_paginate {
+  display: none;
+}
+.page-load-status {
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  display: none;
+}
+// もっとみるボタン
+.view-more-button {
+  font-size: 16px;
+  padding: 10px;
+  background-color: rgb(172, 147, 37);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: 0 auto;
+  text-align: center;
+  margin: 20px;
+  display: none;
+}
+
+// ローディング
+.loader-wheel {
+  font-size: 75px;
+  position: relative;
+  height: 1em;
+  width: 1em;
+  padding-left: 0.45em;
+  overflow: hidden;
+  margin: 0 auto;
+  animation: loader-wheel-rotate 0.5s steps(12) infinite;
+}
+.loader-wheel i {
+  display: block;
+  position: absolute;
+  height: 0.3em;
+  width: 0.1em;
+  border-radius: 0.05em;
+  background: lightgray;
+  opacity: 0.8;
+  transform: rotate(-30deg);
+  transform-origin: center 0.5em;
+}
+@keyframes loader-wheel-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

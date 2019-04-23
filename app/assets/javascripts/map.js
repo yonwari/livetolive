@@ -7,7 +7,7 @@ document.addEventListener('turbolinks:load', () => {
 // GoogleMAP表示用
 const initMap = () => {
     const locations = gon.places;
-    if (locations && locations.length >= 0) {
+    if (document.querySelector('.map') != null) {
         // default値
         const mapOptions = {
             zoom: 12,
@@ -23,28 +23,29 @@ const initMap = () => {
         // map初期化
         const map = new google.maps.Map(document.querySelector('.map'), mapOptions);
 
-        // infoWindow準備
-        const infowindow = new google.maps.InfoWindow;
+        // 変数準備
         let marker;
+        let infowindow = new google.maps.InfoWindow;
 
-        // マーカー作成
+        // マーカー、ウインドウ作成
         locations.forEach(location => {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(location["latitude"], location["longitude"]),
                 map: map
             });
-            google.maps.event.addListener(marker, 'click', (marker => {
-                infowindow.setContent(location["place_name"]);
-                infowindow.open(map, marker);
-            }));
+            google.maps.event.addListener(marker, 'click', ((marker) => {
+              return () => {
+                  infowindow.setContent(location["place_name"]);
+                  infowindow.open(map, marker);
+              }
+            })(marker));
         });
     }
 }
 
-
 // 近くのカフェ表示用
 const initCafe = () => {
-    if (gon.place) {
+    if (document.querySelector('#nearmap') != null) {
         // ライブ会場の座標作る
         const event_place = new google.maps.LatLng(gon.place.latitude,gon.place.longitude);
         // MAP初期化（ライブ会場がセンター）

@@ -24,10 +24,10 @@ $(document).on('turbolinks:load',function(){
     });
 });
 
-//テキストカウント用
-$(document).on('turbolinks:load',function(){
-    let check = $(".count").text($("#text_count").val());
 
+$(document).on('turbolinks:load',function(){
+    //テキストカウント用
+    let check = $(".count").text($("#text_count").val());
     if(check.length){
         $(".count").text($("#text_count").val().length);
         $("#text_count").on("keydown keyup keypress change",function(){
@@ -40,5 +40,35 @@ $(document).on('turbolinks:load',function(){
                 $('.count').attr("class", "count text_count_ok");
             }
         });
+    }
+
+    // 新規追加におけるフォーム自動補完
+    // 開場時間に合わせて開演、終演時間が補完される
+    $(".event_new_container #open_date_form").one("blur", function(){
+        const open_date = $(this).val();
+        $("#start_date_form").val(open_date);
+        $("#end_date_form").val(open_date);
+    });
+
+    // 無限スクロール用
+    if (document.querySelector('nav.pagination') != null) {
+      const $container = $('#events_container').infiniteScroll({
+          path: "nav.pagination a[rel=next]",
+          append: ".event_list",
+          status: '.page-load-status',
+          loadOnScroll: false,
+      });
+      const $viewMoreButton = $('.view-more-button');
+      $viewMoreButton.show();
+      $viewMoreButton.on('click', function() {
+          // 次ページ
+          $container.infiniteScroll('loadNextPage');
+          // スクロールでローディングできるようにする
+          $container.infiniteScroll( 'option', {
+            loadOnScroll: true,
+          });
+          // ボタンを非表示
+          $viewMoreButton.hide();
+      });
     }
 });

@@ -10,15 +10,15 @@
           .form-group
             = f.label :open_date, "開場時間"
             span.required *
-            = f.datetime_field :open_date, class:"form-control", required: true
+            = f.datetime_field :open_date, class:"form-control", required: true, id:"open_date_form"
           .form-group
             = f.label :start_date, "開始日時"
             span.required *
-            = f.datetime_field :start_date, class:"form-control", required: true
+            = f.datetime_field :start_date, class:"form-control", required: true, id:"start_date_form"
           .form-group
             = f.label :end_date, "終了日時"
             span.required *
-            = f.datetime_field :end_date, class:"form-control", required: true
+            = f.datetime_field :end_date, class:"form-control", required: true, id:"end_date_form"
           .form-group
             = f.label :place_id, "会場（リストから選択）"
             span.required *

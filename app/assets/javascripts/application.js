@@ -48,18 +48,45 @@ document.addEventListener('turbolinks:load', () => {
     });
 
     //Topイメージのスライド用
-    $('.top_image').vegas({
-        slides: [
-            { src: 'assets/img/theater_D.jpg' },
-            { src: 'assets/img/liveimage.jpg' },
-            { src: 'assets/img/shibuyanight.jpg' },
-        ],
-        overlay: 'assets/overlays/03.png',
-        transition: 'fade',
-        transitionDuration: 3000,
-        delay: 8000,
-        animation: 'random',
-        animationDuration: 10000,
+    if (document.querySelector(".top_image") != null) {
+        $('.top_image').vegas({
+            slides: [
+                { src: '/assets/img/theater_D.jpg' },
+                { src: '/assets/img/liveimage.jpg' },
+                { src: '/assets/img/shibuyanight.jpg' },
+            ],
+            overlay: '/assets/overlays/03.png',
+            transition: 'fade',
+            transitionDuration: 3000,
+            delay: 8000,
+            animation: 'random',
+            animationDuration: 10000,
+        });
+    }
+
+    // 上まで戻るボタン用
+    $('#back_to_top a').on('click',function(){
+        $('body, html').animate({
+            scrollTop:0
+        }, 800);
+            return false;
+    });
+    // スクロールすると上まで戻るボタン可視化
+    $(window).scroll(function () {
+        $("#back_to_top").fadeIn("slow");
+    });
+
+    // スクロールでTOP項目をfadeinする
+    $(window).scroll(function (){
+        $('.fadein').each(function(){
+            var targetElement = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > targetElement - windowHeight + 200){
+                $(this).css('opacity','1');
+                $(this).css('transform','translateY(0)');
+            }
+        });
     });
 });
 

@@ -28,6 +28,6 @@ set :environment, rails_env
 # cronのログの吐き出し場所。ここでエラー内容を確認する
 set :output, "#{Rails.root}/log/cron.log"
 
-every :monday, at: ['1:00 pm'] do
+every :monday, at: ['4:00 am'] do
   rake 'send_pop_events:send_pop_events'
 end
