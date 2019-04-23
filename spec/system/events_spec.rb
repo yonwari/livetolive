@@ -142,9 +142,9 @@ describe 'イベント機能', type: :system do
       before do
         visit new_event_path
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
@@ -189,9 +189,9 @@ describe 'イベント機能', type: :system do
       before do
         visit new_event_path
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
@@ -235,9 +235,9 @@ describe 'イベント機能', type: :system do
       before do
         visit new_event_path
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
@@ -283,9 +283,9 @@ describe 'イベント機能', type: :system do
       before do
         visit edit_event_path(event)
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
@@ -330,9 +330,9 @@ describe 'イベント機能', type: :system do
       before do
         visit edit_event_path(event)
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
@@ -376,9 +376,9 @@ describe 'イベント機能', type: :system do
       before do
         visit edit_event_path(event)
         fill_in 'ライブ名', with: event_name
-        fill_in '開場時間', with: open_date
-        fill_in '開始日時', with: start_date
-        fill_in '終了日時', with: end_date
+        fill_in 'open_date_form', with: open_date
+        fill_in 'start_date_form', with: start_date
+        fill_in 'end_date_form', with: end_date
         fill_in 'event_comedianlist', with: comedianlist
         fill_in 'text_count', with: explanation
         fill_in '予約URL', with: reserve_url
