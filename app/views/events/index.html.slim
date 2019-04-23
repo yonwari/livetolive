@@ -4,7 +4,7 @@
   .container
     .head_title.center-block
       h1 ライブ情報一覧
-    .events_container
+    #events_container
       - if @result.count > 0
         - @result.each do |event|
           .event_list
@@ -38,10 +38,31 @@
                 / アクションアイコン呼び出し
                 = render partial: 'events/actionicons', locals: { event: event }
       - else
-        h2 検索結果はありません。
+        h2.none_result 検索結果はありません。
     .paginate
-      h4= page_entries_info(@result)
-      h4= paginate @result
+      h4.events_paginate = paginate @result
+    / 無限スクロール用のステータス表示
+    .page-load-status
+      .infinite-scroll-request
+        .loader-wheel
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+          i
+      p.infinite-scroll-last
+        | 結果は以上です
+      p.infinite-scroll-error
+        | 読み込みでエラーが発生しました
+    / もっとみるボタン
+    p.view-more-button もっと見る
 
 / 上まで戻るボタン
 = render = render partial: 'layouts/back_to_top'

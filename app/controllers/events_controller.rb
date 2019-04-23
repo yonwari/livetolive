@@ -12,7 +12,7 @@ class EventsController < ApplicationController
       end
     end
     @search = Event.from_now.ransack(params[:q])
-    @result = @search.result.page(params[:page]).per(10).recent
+    @result = @search.result.page(params[:page]).per(5).recent
   end
 
   def show

@@ -49,4 +49,26 @@ $(document).on('turbolinks:load',function(){
         $("#start_date_form").val(open_date);
         $("#end_date_form").val(open_date);
     });
+
+    // 無限スクロール用
+    if (document.querySelector('nav.pagination') != null) {
+      const $container = $('#events_container').infiniteScroll({
+          path: "nav.pagination a[rel=next]",
+          append: ".event_list",
+          status: '.page-load-status',
+          loadOnScroll: false,
+      });
+      const $viewMoreButton = $('.view-more-button');
+      $viewMoreButton.show();
+      $viewMoreButton.on('click', function() {
+          // 次ページ
+          $container.infiniteScroll('loadNextPage');
+          // スクロールでローディングできるようにする
+          $container.infiniteScroll( 'option', {
+            loadOnScroll: true,
+          });
+          // ボタンを非表示
+          $viewMoreButton.hide();
+      });
+    }
 });
