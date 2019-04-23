@@ -48,19 +48,21 @@ document.addEventListener('turbolinks:load', () => {
     });
 
     //Topイメージのスライド用
-    $('.top_image').vegas({
-        slides: [
-            { src: 'assets/img/theater_D.jpg' },
-            { src: 'assets/img/liveimage.jpg' },
-            { src: 'assets/img/shibuyanight.jpg' },
-        ],
-        overlay: 'assets/overlays/03.png',
-        transition: 'fade',
-        transitionDuration: 3000,
-        delay: 8000,
-        animation: 'random',
-        animationDuration: 10000,
-    });
+    if (document.querySelector(".top_image") != null) {
+        $('.top_image').vegas({
+            slides: [
+                { src: '/assets/img/theater_D.jpg' },
+                { src: '/assets/img/liveimage.jpg' },
+                { src: '/assets/img/shibuyanight.jpg' },
+            ],
+            overlay: '/assets/overlays/03.png',
+            transition: 'fade',
+            transitionDuration: 3000,
+            delay: 8000,
+            animation: 'random',
+            animationDuration: 10000,
+        });
+    }
 
     // 上まで戻るボタン用
     $('#back_to_top a').on('click',function(){

@@ -7,7 +7,7 @@ document.addEventListener('turbolinks:load', () => {
 // GoogleMAP表示用
 const initMap = () => {
     const locations = gon.places;
-    if (locations && locations.length >= 0) {
+    if (document.querySelector('.map') != null) {
         // default値
         const mapOptions = {
             zoom: 12,
@@ -45,7 +45,7 @@ const initMap = () => {
 
 // 近くのカフェ表示用
 const initCafe = () => {
-    if (gon.place) {
+    if (document.querySelector('#nearmap') != null) {
         // ライブ会場の座標作る
         const event_place = new google.maps.LatLng(gon.place.latitude,gon.place.longitude);
         // MAP初期化（ライブ会場がセンター）
