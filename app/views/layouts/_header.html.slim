@@ -5,7 +5,7 @@ header.navbar.navbar-fixed-top
         nav.navbar-nav.navbar-left
           .header_logo data-turbolinks="false"
             = link_to root_path do
-              = image_tag("img/livetolive_logo.png", :size => "80x80", :alt => "ロゴ")
+              = image_tag("/images/img/livetolive_logo.png", :size => "80x80", :alt => "ロゴ")
         nav
           ul.nav.navbar-nav.navbar-right
             - if user_signed_in?

@@ -21,7 +21,7 @@
                 - if event.event_image.attached?
                   = image_tag event.event_image, class:"event-image", size: '315x415'
                 - else
-                  = image_tag 'img/no_image.jpg', class:"event-image", size:'315x415'
+                  = image_tag '/images/img/no_image.jpg', class:"event-image", size:'315x415'
             .event_info
               .event_start
                 p = event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')

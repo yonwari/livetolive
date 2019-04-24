@@ -3,7 +3,7 @@
   .top_explain_container
     .explain_header_top
       - 3.times do
-        = image_tag 'img/walkingman.png', class:"walkingman"
+        = image_tag '/images/img/walkingman.png', class:"walkingman"
       h1 はしごライフの強い味方。
     .explain_header.fadein
       h4 ライブのはしごは、時間との闘いである。
@@ -20,7 +20,7 @@
                 - if event.event_image.attached?
                   = image_tag event.event_image, class:"slideimg", size: '300x400'
                 - else
-                  = image_tag 'img/no_image.jpg', class:"slideimg", size:'300x400'
+                  = image_tag '/images/img/no_image.jpg', class:"slideimg", size:'300x400'
       .events_link
         = link_to events_path do
           i.fa.fa-arrow-right
@@ -31,17 +31,17 @@
     .searched_places
       .searched_place
         = link_to controller: :events, action: :index, q:{ place_address_cont: :"新宿" } do
-          = image_tag  "img/kabukityo.jpg", size:'320x220'
+          = image_tag  "/images/img/kabukityo.jpg", size:'320x220'
           span.area_title 新宿
       .searched_place
         = link_to controller: :events, action: :index, q:{ place_address_cont: :"北沢" } do
-          = image_tag  "img/shimokita.jpg", size:'320x220'
+          = image_tag  "/images/img/shimokita.jpg", size:'320x220'
           span.area_title 下北
       .searched_place
         = link_to controller: :events, action: :index, q:{ place_address_cont: :"中野" } do
-          = image_tag  "img/nakano.jpg", size:'320x220'
+          = image_tag  "/images/img/nakano.jpg", size:'320x220'
           span.area_title 中野
       .searched_place
         = link_to controller: :events, action: :index, q:{ place_address_cont: :"渋谷" } do
-          = image_tag  "img/shibuyakousaten.jpg", size:'320x220'
+          = image_tag  "/images/img/shibuyakousaten.jpg", size:'320x220'
           span.area_title 渋谷

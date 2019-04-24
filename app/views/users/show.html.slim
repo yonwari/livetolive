@@ -31,7 +31,7 @@
                           td
                           td
                             | ...
-                            = image_tag 'img/walkingman.png', class:"walkingman", size:"30x30"
+                            = image_tag '/images/img/walkingman.png', class:"walkingman", size:"30x30"
                             | ...
                           td
           - else
@@ -63,7 +63,7 @@
                   = link_to event_path(event) do
                     = image_tag event.event_image, class:"event-image", size: '300x400'
                 - else
-                  = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
+                  = image_tag '/images/img/no_image.jpg', class:"event-image", size:'300x400'
               .event_info
                 .event_start
                   p = event.start_date.strftime('%Y年%m月%d日 %H時%M分 開演')
