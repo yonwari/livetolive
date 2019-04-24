@@ -18,7 +18,7 @@
             - if @event.event_image.attached?
               = image_tag @event.event_image, class:"event-image", size: '300x400'
             - else
-              = image_tag 'img/no_image.jpg', class:"event-image", size:'300x400'
+              = image_tag '/images/img/no_image.jpg', class:"event-image", size:'300x400'
           .event_detail_info
             .event_explain
               p

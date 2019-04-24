@@ -51,11 +51,11 @@ document.addEventListener('turbolinks:load', () => {
     if (document.querySelector(".top_image") != null) {
         $('.top_image').vegas({
             slides: [
-                { src: '/assets/img/theater_D.jpg' },
-                { src: '/assets/img/liveimage.jpg' },
-                { src: '/assets/img/shibuyanight.jpg' },
+                { src: '/images/img/theater_D.jpg' },
+                { src: '/images/img/liveimage.jpg' },
+                { src: '/images/img/shibuyanight.jpg' },
             ],
-            overlay: '/assets/overlays/03.png',
+            overlay: '/images/overlays/03.png',
             transition: 'fade',
             transitionDuration: 3000,
             delay: 8000,
