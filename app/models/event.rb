@@ -14,11 +14,27 @@ class Event < ApplicationRecord
   validates :explanation, presence:true,length: { maximum: 200 }
   validates :reserve_url, presence: true
   validates :open_date, presence: true
+  validate :validate_event_image
 
   #scope
   scope :from_now, -> { where('start_date >= ?', DateTime.now) }
   scope :today, -> { where(start_date: DateTime.now.all_day) }
   scope :recent, -> { order("start_date ASC") }
+
+  #画像のバリデーション
+  def validate_event_image
+    return unless event_image.attached?
+    if event_image.blob.byte_size > 30.megabytes
+      event_image.purge
+      errors.add(:event_image, '画像サイズが大きすぎます')
+    elsif !image?
+      event_image.purge
+      errors.add(:event_image, '画像の拡張子はjpg,jpeg,gif,pngのみ選択可能です')
+    end
+  end
+  def image?
+    %w[image/jpg image/jpeg image/gif image/png].include?(event_image.blob.content_type)
+  end
 
   # お気に入り、カレンダー登録チェック
   def favorited_by?(user)
