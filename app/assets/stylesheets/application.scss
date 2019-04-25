@@ -105,3 +105,67 @@ input:invalid {
 	transform: scale(1.3);
   transition-duration: 0.3s;
 }
+
+
+
+
+// レスポンシブ対応（スマホ向け）
+@media screen and (max-width:425px) {
+
+  //header
+  .main_header {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 70px;
+      height: 70px;
+    }
+    i {
+      font-size: 15px;
+    }
+  }
+  .navbar-right {
+    display: flex;
+    justify-content: right;
+  }
+
+  .top_message p {
+    font-size: 32px;
+  }
+  .top_logo img {
+    height: 250px;
+    width: 250px;
+  }
+  #search_form_area {
+    width: 100%;
+  }
+  .event_search {
+    display: flex;
+  }
+  .event_search_form {
+    padding-top: 0;
+  }
+  .search_buttons {
+    display: block;
+    input, button {
+      margin: 0 auto;
+    }
+    .event_search_button {
+      text-align: center;
+    }
+  }
+  .area_title {
+    font-size: 30px;
+  }
+  .searched_places {
+    display: block;
+  }
+  .head_title {
+    width: 100%;
+  }
+  .swiper-slide img {
+    display: inline;
+  }
+
+
+}
