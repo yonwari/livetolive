@@ -19,9 +19,11 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :bundle_command, "/usr/local/bin/bundle exec"
+
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 # cronを実行する環境変数
-rails_env = ENV['RAILS_ENV'] || :development
+rails_env = ENV['RAILS_ENV'] || :production
 # cronを実行する環境変数をセット
 set :environment, rails_env
 
@@ -31,3 +33,4 @@ set :output, "#{Rails.root}/log/cron.log"
 every :monday, at: ['4:00 am'] do
   rake 'send_pop_events:send_pop_events'
 end
+
