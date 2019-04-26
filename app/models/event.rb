@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :event_comedians, dependent: :destroy
   has_many :comedians, through: :event_comedians
+  has_many :notifications, dependent: :destroy
   belongs_to :place
 
   # バリデーション

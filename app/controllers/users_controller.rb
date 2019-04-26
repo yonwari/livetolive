@@ -15,12 +15,17 @@ class UsersController < ApplicationController
 
     #カレンダー表示jbuilder用
     @my_events = @user.events
-    gon.user_id = current_user.id
+    gon.user_id = @user.id
 
     #お気に入りリスト表示用
     favorites = @user.favorites
     @my_favorites = favorites.map(&:event)
     @my_favorites = Kaminari.paginate_array(@my_favorites).page(params[:page]).per(5) #kaminari用
+
+    #通知が合った場合は既読として削除する
+    if notifications = current_user.notifications
+      notifications.destroy_all
+    end
   end
 
   def edit
