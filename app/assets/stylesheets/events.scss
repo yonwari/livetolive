@@ -354,4 +354,24 @@
     p {font-size: 10px;}
   }
 
+  //イベント詳細
+  .events_show_container .col-xs-offset-4 {
+    margin: 0;
+  }
+  .main_info {
+    display: block;
+  }
+  .events_show_container {
+    h3 {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+  .event_detail_info .click_icon {
+    p {font-size: 10px;}
+  }
+  .caldendar_info {
+    font-size: 13px;
+  }
+
 }
