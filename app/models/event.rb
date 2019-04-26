@@ -16,11 +16,57 @@ class Event < ApplicationRecord
   validates :reserve_url, presence: true
   validates :open_date, presence: true
   validate :validate_event_image
+  validate :validate_past_datetime
 
   #scope
   scope :from_now, -> { where('start_date >= ?', DateTime.now) }
   scope :today, -> { where(start_date: DateTime.now.all_day) }
   scope :recent, -> { order("start_date ASC") }
+
+  #芸人タグ付け用
+  #DBへのコミット直前に実施する
+  after_create do
+    event = Event.find_by(id: self.id)
+    if event.comedianlist.present?
+      comedians  = self.comedianlist.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+      comedians.uniq.map do |comedian|
+        #ハッシュタグは先頭の'#'を外した上で保存
+        tag = Comedian.find_or_create_by(comedian_name: comedian.delete('#'))
+        event.comedians << tag
+      end
+    end
+  end
+
+  before_update do
+    event = Event.find_by(id: self.id)
+    event.comedians.clear
+    if event.comedianlist.present?
+      comedians = self.comedianlist.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+      comedians.uniq.map do |comedian|
+        tag = Comedian.find_or_create_by(comedian_name: comedian.delete('#'))
+        event.comedians << tag
+      end
+    end
+  end
+
+  #過去日付のバリデーション
+  def validate_past_datetime
+    if open_date.present? && open_date.past?
+      errors.add(:open_date, "に過去の日付を入力することはできません。")
+    end
+    if start_date.present? && start_date.past?
+      errors.add(:start_date, "に過去の日付を入力することはできません。")
+    end
+    if end_date.present? && end_date.past?
+      errors.add(:end_date, "に過去の日付を入力することはできません。")
+    end
+    if end_date.present? && start_date.present? && end_date <= start_date
+      errors.add(:end_date, "を開始日時より過去または同時刻に設定することはできません。")
+    end
+    if start_date.present? && open_date.present? && start_date <= open_date
+      errors.add(:open_date, "を開始日時より未来または同時刻に設定することはできません。")
+    end
+  end
 
   #画像のバリデーション
   def validate_event_image
@@ -51,30 +97,4 @@ class Event < ApplicationRecord
     start = Date.parse(self.start_date.to_s)
     start - today
   end
-
-  # 芸人タグ付け用
-    #DBへのコミット直前に実施する
-    after_create do
-      event = Event.find_by(id: self.id)
-      if event.comedianlist.present?
-        comedians  = self.comedianlist.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-        comedians.uniq.map do |comedian|
-          #ハッシュタグは先頭の'#'を外した上で保存
-          tag = Comedian.find_or_create_by(comedian_name: comedian.delete('#'))
-          event.comedians << tag
-        end
-      end
-    end
-
-    before_update do
-      event = Event.find_by(id: self.id)
-      event.comedians.clear
-      if event.comedianlist.present?
-        comedians = self.comedianlist.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-        comedians.uniq.map do |comedian|
-          tag = Comedian.find_or_create_by(comedian_name: comedian.delete('#'))
-          event.comedians << tag
-        end
-      end
-    end
 end
