@@ -148,6 +148,8 @@ document.addEventListener('turbolinks:load', () => {
     $("#geosearch").on('click', function() {
         if( navigator.geolocation ){
             // 現在位置を取得できる場合の処理
+            // ローディング表示
+            $('#overlay, .loader-wheel').fadeIn();
             navigator.geolocation.getCurrentPosition(
                 successCallback, errorCallback
             );

@@ -383,3 +383,14 @@
   }
 
 }
+
+// 現在地から探すボタンのローディング
+.top_image .loader-wheel {
+  display: none;
+}
+
+.search-load {
+  position:absolute;
+  top:50%;
+  left:50%;
+}
