@@ -5,7 +5,7 @@
     = image_tag "/images/img/livetolive_logo.png", size: "400x400"
   .event_search_form
     = search_form_for search  do |f|
-      = f.text_field :event_title_or_comedianlist_or_place_place_name_or_place_address_cont, placeholder:"ライブ名、芸人名、会場名、地域名で検索 （例：「東京　千鳥　単独」）"
+      = f.text_field :event_title_or_comedianlist_or_place_place_name_or_place_address_cont, placeholder:"ライブ名、芸人名、会場名、地域名で検索 （例：「東京　千鳥　単独」）", id:"search_form_area"
       = button_tag( class: "btn btn-default btn-sm",id: "search" ) do
         = content_tag :span, "", class: "fa fa-search"
   .search_buttons

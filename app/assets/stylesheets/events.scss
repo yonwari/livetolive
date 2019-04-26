@@ -321,3 +321,65 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+
+//レスポンシブ対応（スマホ向け）
+@media screen and (max-width:425px) {
+
+  //イベント一覧
+  .event_list {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0;
+    img {
+      display: none;
+    }
+  }
+  .today_label, .tomorrow_label, .close_label {
+    font-size: 20px;
+    position: static;
+  }
+
+  .event_list .event_info .event_start {
+    font-size: 20px;
+    border-radius: 0px;
+    margin: 5px 0;
+  }
+  .event_list .event_info {
+    margin: 0;
+  }
+  .event_list .click_icon {
+    p {font-size: 10px;}
+  }
+
+  //イベント詳細
+  .events_show_container .col-xs-offset-4 {
+    margin: 0;
+  }
+  .main_info {
+    display: block;
+  }
+  .events_show_container {
+    h3 {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+  .event_detail_info .click_icon {
+    p {font-size: 10px;}
+  }
+  .caldendar_info {
+    font-size: 13px;
+  }
+
+  //イベント新規登録
+  .events-form .line-forms-wrapper {
+    display: block;
+  }
+  .events-form .line-forms {
+    width: 90%;
+  }
+
+}
