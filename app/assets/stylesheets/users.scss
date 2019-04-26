@@ -163,6 +163,28 @@
   text-align: center;
 }
 
+// 通知
+.notification {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.header-item {
+  position: relative;
+}
+#my_notification {
+  width: 100%;
+  background-color: #811310;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+}
+
 
 //レスポンシブ対応（スマホ向け）
 @media screen and (max-width:425px) {
@@ -190,5 +212,15 @@
   #my_top_container h2 {
     font-size: 20px;
   }
-
+  //modal
+  #result {
+    width: 100%;
+    height: 350px;
+  }
+  .user-form {
+    text-align: start;
+    .btn {
+      width: 100%;
+    }
+  }
 }
