@@ -162,3 +162,33 @@
   color: white;
   text-align: center;
 }
+
+
+//レスポンシブ対応（スマホ向け）
+@media screen and (max-width:425px) {
+
+  .mypage_main_contents {
+    display: block;
+    #my_map {
+      width: 100%;
+    }
+    .table {
+      font-size: 12px;
+    }
+    .btn {
+      font-size: 10px;
+    }
+    .table > tbody > tr > td {
+      vertical-align: middle;
+    }
+  }
+  #calendar {
+    width: 100%;
+    height: 0px;
+    padding-bottom: 300px;
+  }
+  #my_top_container h2 {
+    font-size: 20px;
+  }
+
+}
