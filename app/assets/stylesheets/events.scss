@@ -64,11 +64,11 @@
 .event_list {
   display: flex;
   justify-content: center;
-  margin: 30px;
+  margin: 80px;
   padding: 60px;
   background-color: white;
-  border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
-  border: 2px solid #333;
+  border: dashed 2px #060328;
+  box-shadow: 0px 0px 0px 7px white;
 
   .event_info {
     margin: 0 20px;
@@ -76,7 +76,6 @@
     .event_start {
       background-color: rgb(172, 147, 37);
       color: white;
-      border-radius: 240px 15px 100px 15px / 15px 200px 15px 185px;
       width: 100%;
       font-size: 30px;
       padding: 10px 10px 1px 10px;
@@ -106,8 +105,6 @@
 
 .event-body .head_title {
   color: white;
-  border: 1px solid white;
-  height: 80px;
 }
 
 .paginate {
@@ -175,7 +172,12 @@
 }
 .main_info {
   display: flex;
-  margin: 40px 0;
+  margin: 40px;
+  padding: 30px;
+  background-color: white;
+  border: dashed 2px #060328;
+  box-shadow: 0px 0px 0px 7px white;
+  color: black;
 }
 .event_detail_info {
   padding: 20px;
@@ -183,6 +185,7 @@
   span {
     background-color: rgb(172, 147, 37);
     padding: 5px;
+    color: white;
   }
   .click_events {
     margin: 10px 0;
@@ -343,7 +346,7 @@
   }
 
   .event_list .event_info .event_start {
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 0px;
     margin: 5px 0;
   }
@@ -353,6 +356,21 @@
   .event_list .click_icon {
     p {font-size: 10px;}
   }
+  .event_title {
+    font-size: 18px;
+  }
+  .event_info_detail span {
+    font-size: 13px;
+  }
+  #event_head h1 {
+    font-size: 25px;
+  }
+  .event_map_title{
+    font-size: 25px;
+  }
+  #near_cafe h1 {
+    font-size: 25px;
+  }
 
   //イベント詳細
   .events_show_container .col-xs-offset-4 {
@@ -360,7 +378,14 @@
   }
   .main_info {
     display: block;
+    margin: 0;
+    padding: 0;
+    background-color: #060328;
+    border: none;
+    box-shadow: none;
+    color: white;
   }
+
   .events_show_container {
     h3 {
       font-size: 16px;

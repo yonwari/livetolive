@@ -4,7 +4,7 @@
       .head_wrap
         .head_title
           h2 = "#{@user.user_name}さんのページ"
-      .mypage_main_contents
+      .mypage_main_contents.clearfix
         .todays_event_container
           - if @user.have_today_events?
             #my_notification
@@ -39,8 +39,8 @@
                           td
           - else
             p 本日登録したイベントはありません
-        #my_map.map
-      .my_link_menu_wrapper
+        #my_map.map.clearfix
+      .my_link_menu_wrapper.clearfix
         .my_link_menu
           .link_content.btn.btn-default#to_favs
               i.fa.fa-heart
