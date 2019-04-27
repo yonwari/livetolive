@@ -10,7 +10,7 @@
             #my_notification
               p 本日開催のイベントがあります！
           .todays_header
-            = Date.today.strftime('%Y年%m月%d日')
+            = Time.zone.now.strftime('%Y年%m月%d日')
             span の予定
           - if @today_events.count > 0
             .schedule_table

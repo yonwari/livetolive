@@ -11,13 +11,13 @@
   .search_buttons
     .event_search_button
       = search_form_for search, url: events_path do |f|
-        = f.hidden_field :start_date_gteqt, value: DateTime.now.beginning_of_day
-        = f.hidden_field :start_date_lteq, value: DateTime.now.end_of_day
+        = f.hidden_field :start_date_gteqt, value: Time.zone.now.beginning_of_day
+        = f.hidden_field :start_date_lteq, value: Time.zone.now.end_of_day
         = f.submit "今日のライブ", class:"btn btn-lg btn-info"
     .event_search_button
       = search_form_for search, url: events_path do |f|
-        = f.hidden_field :start_date_gteq, value: DateTime.tomorrow.beginning_of_day
-        = f.hidden_field :start_date_lteq, value: DateTime.tomorrow.end_of_day
+        = f.hidden_field :start_date_gteq, value: Time.zone.tomorrow.beginning_of_day
+        = f.hidden_field :start_date_lteq, value: Time.zone.tomorrow.end_of_day
         = f.submit "明日のライブ", class:"btn btn-lg btn-danger"
     .event_search_button.currentLocation
       = button_tag '現在地から探す', class: 'btn btn-lg btn-primary', id: 'geosearch'
