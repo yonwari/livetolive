@@ -22,9 +22,15 @@ class UsersController < ApplicationController
     @my_favorites = favorites.map(&:event)
     @my_favorites = Kaminari.paginate_array(@my_favorites).page(params[:page]).per(5) #kaminari用
 
-    #通知が合った場合は既読として削除する
+    #通知があった場合は既読として削除する
     if notifications = current_user.notifications
-      notifications.destroy_all
+      #全件削除失敗時はロールバック
+      notifications.transaction do
+        records = notifications.destroy_all
+        unless records.all?(&:destroyed?)
+          raise ActiveRecord::Rollback
+        end
+      end
     end
   end
 
