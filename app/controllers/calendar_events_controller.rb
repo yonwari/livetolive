@@ -5,6 +5,7 @@ class CalendarEventsController < ApplicationController
     if user_signed_in?
       calendar_event = current_user.calendar_events.new(event_id: @event.id)
       calendar_event.save
+      @calendar_count = @event.calendar_events.count
     else
       flash[:notice] = "ログインしてください"
       redirect_to new_user_session_path
@@ -15,6 +16,7 @@ class CalendarEventsController < ApplicationController
     if user_signed_in?
       calendar_event = current_user.calendar_events.find_by(event_id: @event.id)
       calendar_event.destroy
+      @calendar_count = @event.calendar_events.count
     else
       flash[:notice] = "ログインしてください"
       redirect_to new_user_session_path
