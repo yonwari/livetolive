@@ -40,7 +40,9 @@
             = render partial: 'events/actionicons', locals: { event: @event }
             .caldendar_info
               - if @event.calendar_events.count > 0
-                p = "#{@event.calendar_events.count}人のユーザーがカレンダーに登録しています！"
+                p
+                  strong.calendar_count = @event.calendar_events.count
+                  | 人のユーザーがカレンダーに登録しています！
               - else
                 p カレンダー登録しているユーザーはいません。
             .share_button
