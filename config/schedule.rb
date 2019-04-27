@@ -30,7 +30,11 @@ set :environment, rails_env
 # cronのログの吐き出し場所。ここでエラー内容を確認する
 set :output, "#{Rails.root}/log/cron.log"
 
+# 人気ライブを毎週月曜13時にメール配信
 every :monday, at: ['4:00 am'] do
   rake 'send_pop_events:send_pop_events'
 end
-
+# 毎朝9時に当日開催ライブがあれば通知作成
+every 1.day, at: '0:00 am' do
+  rake 'notifications:notifications'
+end

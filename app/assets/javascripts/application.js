@@ -175,6 +175,8 @@ document.addEventListener('turbolinks:load', () => {
                     err_msg = "タイムアウトしました";
                     break;
             }
+            $('#overlay, .loader-wheel').fadeOut();
+            alert(err_msg);
         };
     });
 });

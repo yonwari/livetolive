@@ -19,62 +19,64 @@ header.navbar.navbar-fixed-top
                   = link_to events_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-search"></i>
+                        i.fa.fa-search
                       p EVENTS
                 li
                   = link_to user_path(current_user) do
                     .header-item
+                      - if current_user.notificated?
+                        span.notification
                       span.header-icon
-                        <i class="fa fa-user"></i>
+                        i.fa.fa-user
                       p MY PAGE
                 li
                   = link_to new_event_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-pencil"></i>
+                        i.fa.fa-pencil
                       p ADD EVENT
                 li
                   = link_to destroy_user_session_path, method: :delete do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-sign-out"></i>
+                        i.fa.fa-sign-out
                       p LOG OUT
                 li
                   = link_to inquiries_new_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-envelope-o"></i>
+                        i.fa.fa-envelope-o
                       p CONTACT
             - else
                 li
                   = link_to events_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-search"></i>
+                        i.fa.fa-search
                       p EVENTS
                 li
                   = link_to new_event_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-pencil"></i>
+                        i.fa.fa-pencil
                       p ADD EVENT
                 li
                   = link_to new_user_registration_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-user-plus"></i>
+                        i.fa.fa-user-plus
                       p SIGN UP
                 li
                   = link_to new_user_session_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-sign-in"></i>
+                        i.fa.fa-sign-in
                       p LOG IN
                 li
                   = link_to inquiries_new_path do
                     .header-item
                       span.header-icon
-                        <i class="fa fa-envelope-o"></i>
+                        i.fa.fa-envelope-o
                       p CONTACT
   #flash_message
     = flash[:notice]
