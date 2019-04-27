@@ -20,10 +20,6 @@
             - else
               = image_tag '/images/img/no_image.jpg', class:"event-image", size:'300x400'
           .event_detail_info
-            .event_explain
-              p
-                span 紹介文
-              p = @event.explanation
             .event_moredetails
               p
                 span 出演者
@@ -37,6 +33,10 @@
               p
                 span 閉演予定
               p = @event.end_date.strftime('%Y年%m月%d日 %H時%M分')
+            .event_explain
+              p
+                span 紹介文
+              p = @event.explanation
             = render partial: 'events/actionicons', locals: { event: @event }
             .caldendar_info
               - if @event.calendar_events.count > 0
