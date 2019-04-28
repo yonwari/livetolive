@@ -42,12 +42,12 @@ body{
 	font-family: 'Kosugi Maru', sans-serif;
 	background-color: #060329;
 }
+
 header .main_header {
 	background-color: white;
-	opacity:0.6;
-	.container {
-		border-bottom: 1px solid gray;
-	}
+  opacity:0.6;
+  width: 100%;
+  box-sizing: border-box;
 }
 .header-icon{
 	font-size:25px;
@@ -55,6 +55,39 @@ header .main_header {
 		color: #060329;
 	}
 }
+.navbar-right a {
+	text-decoration: none;
+	color: black;
+}
+.navbar-right p {
+	font-size: 11px;
+	line-height: 100%;
+}
+.navbar {
+	margin-bottom: 0;
+}
+.header-item {
+  text-align: center;
+  p {display: none;}
+}
+// ヘッダーにカーソルを合わせると拡大
+.header-item {
+	display: block;
+	transition-duration: 0.3s;
+}
+.header-item:hover {
+	transform: scale(1.3);
+  transition-duration: 0.3s;
+  p {
+    display: block;
+    color: gray;
+  }
+}
+.navbar-right {
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
 footer {
   color: white;
   text-align: right;
@@ -69,26 +102,8 @@ footer {
   text-align: center;
 }
 
-.header-item {
-  text-align: center;
-  p {display: none;}
-}
-
 .flash-messages {
 	text-align: center;
-}
-
-.navbar-right a {
-	text-decoration: none;
-	color: black;
-}
-
-.navbar-right p {
-	font-size: 11px;
-	line-height: 100%;
-}
-.navbar {
-	margin-bottom: 0;
 }
 
 .required {
@@ -105,24 +120,6 @@ input:invalid {
 .body_content {
 	padding-top: 81px;
 }
-
-// ヘッダーにカーソルを合わせると拡大
-.header-item {
-	display: block;
-	transition-duration: 0.3s;
-}
-.header-item:hover {
-	transform: scale(1.3);
-  transition-duration: 0.3s;
-  p {
-    display: block;
-    color: gray;
-  }
-}
-.navbar-right {
-  margin-top: 10px;
-}
-
 
 // レスポンシブ対応（スマホ向け）
 @media screen and (max-width:425px) {
