@@ -200,13 +200,13 @@
 
 // 通知
 .notification {
-  width: 10px;
-  height: 10px;
-  border-radius: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
   background-color: red;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -3px;
+  right: -3px;
 }
 .header-item {
   position: relative;
@@ -270,5 +270,8 @@
   }
   .login_container {
     width: 80%;
+  }
+  .notification {
+    top: 8px;
   }
 }
