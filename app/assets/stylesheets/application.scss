@@ -40,7 +40,7 @@ body a:hover {
 body{
 	width: 100%;
 	font-family: 'Kosugi Maru', sans-serif;
-	background-color: #060329;
+  background:repeating-linear-gradient(-35deg, #060329 0, #060329 10px, #0d0a38 10px, #0d0a38 20px);
 }
 
 header .main_header {
