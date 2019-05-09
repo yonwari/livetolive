@@ -170,9 +170,9 @@ describe 'イベント機能', type: :system do
 
       context '新規作成画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(100) }
+        let(:start_date) { DateTime.now.since(200) }
         let(:open_date) { DateTime.now.since(100) }
-        let(:end_date) { DateTime.now.since(100) }
+        let(:end_date) { DateTime.now.since(300) }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
@@ -217,9 +217,9 @@ describe 'イベント機能', type: :system do
 
       context '新規作成画面で全ての情報を入力した時' do
         let(:event_name) { "テストライブ" }
-        let(:start_date) { DateTime.now.since(100) }
+        let(:start_date) { DateTime.now.since(200) }
         let(:open_date) { DateTime.now.since(100) }
-        let(:end_date) { DateTime.now.since(100) }
+        let(:end_date) { DateTime.now.since(300) }
         let(:explanation) { "test" }
         let(:reserve_url) { "https://www.yahoo.co.jp/"}
         let(:comedianlist) { "#test #test2" }
