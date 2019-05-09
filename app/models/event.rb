@@ -19,8 +19,8 @@ class Event < ApplicationRecord
   validate :validate_past_datetime
 
   #scope
-  scope :from_now, -> { where('start_date >= ?', DateTime.now) }
-  scope :today, -> { where(start_date: DateTime.now.all_day) }
+  scope :from_now, -> { where('start_date >= ?', Time.zone.now) }
+  scope :today, -> { where(start_date: Time.zone.now.all_day) }
   scope :recent, -> { order("start_date ASC") }
 
   #芸人タグ付け用
@@ -93,7 +93,7 @@ class Event < ApplicationRecord
 
   # 開催日までの日数を返却
   def from_now_to_start_date
-    today = Date.today
+    today = Date.parse(Time.zone.now.to_s)
     start = Date.parse(self.start_date.to_s)
     start - today
   end
