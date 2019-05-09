@@ -69,14 +69,14 @@ const initCafe = () => {
 // 近隣カフェマーカー作成
 const createMarker = (latlng, place) => {
     // マーカー作成
-    var marker = new google.maps.Marker({
+    const marker = new google.maps.Marker({
         position: latlng,
         map: nearmap,
     });
     // 吹き出しにカフェの名前を埋め込む
-    var contentString = `<div class="sample"><p id="place_name">${place.name}</p></div>`;
+    const contentString = `<div class="sample"><p id="place_name">${place.name}</p></div>`;
     // 吹き出し成形
-    var infoWindow = new google.maps.InfoWindow({
+    const infoWindow = new google.maps.InfoWindow({
         content:  contentString
     });
     // クリックされたら吹き出し表示
