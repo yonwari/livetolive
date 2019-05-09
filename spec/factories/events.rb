@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :event do
     event_title { "テストライブ" }
-    start_date { DateTime.now.since(600) }
-    open_date { DateTime.now.since(660) }
+    start_date { DateTime.now.since(660) }
+    open_date { DateTime.now.since(600) }
     end_date { DateTime.now.since(720) }
     explanation { "test" }
     reserve_url { "https://www.yahoo.co.jp/" }
@@ -12,9 +12,9 @@ FactoryBot.define do
 
   factory :tomorrow_event, class:Event do
     event_title { "明日用ライブ" }
-    start_date { DateTime.now.tomorrow }
-    open_date { DateTime.now.tomorrow }
-    end_date { DateTime.now.tomorrow }
+    start_date { DateTime.now.tomorrow.since(660) }
+    open_date { DateTime.now.tomorrow.since(600) }
+    end_date { DateTime.now.tomorrow.since(720) }
     explanation { "test tomorrow" }
     reserve_url { "https://www.yahoo.co.jp/" }
     comedianlist { "#test #test2 #tomorrow" }
@@ -23,9 +23,9 @@ FactoryBot.define do
 
   factory :dat_event, class:Event do
     event_title { "明後日用ライブ" }
-    start_date { DateTime.now.tomorrow.tomorrow }
-    open_date { DateTime.now.tomorrow.tomorrow }
-    end_date { DateTime.now.tomorrow.tomorrow }
+    start_date { DateTime.now.tomorrow.tomorrow.since(660) }
+    open_date { DateTime.now.tomorrow.tomorrow.since(600) }
+    end_date { DateTime.now.tomorrow.tomorrow.since(720) }
     explanation { "test dat" }
     reserve_url { "https://www.yahoo.co.jp/" }
     comedianlist { "#test #test2 #dat" }
@@ -34,9 +34,9 @@ FactoryBot.define do
 
   factory :nm_event, class:Event do
     event_title { "来月用ライブ" }
-    start_date { DateTime.now.next_month }
-    open_date { DateTime.now.next_month }
-    end_date { DateTime.now.next_month }
+    start_date { DateTime.now.next_month.since(660) }
+    open_date { DateTime.now.next_month.since(600) }
+    end_date { DateTime.now.next_month.since(720) }
     explanation { "test nm" }
     reserve_url { "https://www.yahoo.co.jp/" }
     comedianlist { "#test #test2 #nm" }

@@ -41,22 +41,22 @@ RSpec.describe Event, type: :model do
   # scopeテスト
   describe "scope" do
     describe "from_now" do
-      let!(:new_event) { FactoryBot.create(:event, start_date: DateTime.now.tomorrow) }
-      let!(:old_event) { FactoryBot.create(:event, start_date: DateTime.now.yesterday) }
+      let!(:new_event) { FactoryBot.create(:tomorrow_event) }
+      # let!(:old_event) { FactoryBot.create(:event, start_date: DateTime.now.yesterday.since(660), open_date: Datetime.now.yesterday, end_date: Datetime.now.yesterday.since(720)) }
       subject { Event.from_now }
       it { is_expected.to include new_event }
-      it { is_expected.not_to include old_event }
+      # it { is_expected.not_to include old_event }
     end
     describe "today" do
-      let!(:first_event) { FactoryBot.create(:event, start_date: DateTime.now.beginning_of_day) }
-      let!(:last_event) { FactoryBot.create(:event, start_date: DateTime.now.end_of_day) }
-      let!(:tomorrow_event) { FactoryBot.create(:event, start_date: DateTime.now.tomorrow) }
-      let!(:yesterday_event) { FactoryBot.create(:event, start_date: DateTime.now.yesterday) }
+      # let!(:first_event) { FactoryBot.create(:event, start_date: DateTime.now.beginning_of_day.since(660), open_date: DateTime.now.beginning_of_day, end_date: DateTime.now.beginning_of_day.since(720)) }
+      let!(:last_event) { FactoryBot.create(:event, start_date: DateTime.now.end_of_day, open_date: DateTime.now.since(720), end_date: DateTime.now.end_of_day.since(720)) }
+      let!(:tomorrow_event) { FactoryBot.create(:tomorrow_event) }
+      # let!(:yesterday_event) { FactoryBot.create(:event, start_date: DateTime.now.yesterday.since(660), open_date: DateTime.now.yesterday, end_date: DateTime.now.yesterday.since(720)) }
       subject { Event.today }
-      it { is_expected.to include first_event }
+      # it { is_expected.to include first_event }
       it { is_expected.to include last_event }
       it { is_expected.not_to include tomorrow_event }
-      it { is_expected.not_to include yesterday_event }
+      # it { is_expected.not_to include yesterday_event }
     end
   end
 end
