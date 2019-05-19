@@ -183,6 +183,15 @@
 	margin: 5px 0;
 }
 
+.testlogin {
+  @extend .snslogin;
+  background-color: #25aca1;
+  input {
+    background-color: #25aca1;
+    border: none;
+  }
+}
+
 .login_container {
   width: 30%;
 	.actions input {

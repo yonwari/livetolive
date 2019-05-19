@@ -5,6 +5,11 @@
 .snslogin
     - if controller_name != 'sessions'
       = link_to "ログイン画面はこちら", new_session_path(resource_name)
+.testlogin
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.hidden_field :email, value: "test1@gmail.com"
+      = f.hidden_field :password, value: "testtest"
+      = f.submit "テスト用おためしログイン"
 .snslogin
     - if devise_mapping.registerable? && controller_name != 'registrations'
       = link_to "会員登録はこちら", new_registration_path(resource_name)

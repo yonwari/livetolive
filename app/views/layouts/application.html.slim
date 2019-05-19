@@ -10,6 +10,7 @@ html
     meta {name="viewport" content="width=device-width,initial-scale=1.0"}
     script {src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{Rails.application.credentials.api_key[:google]}&libraries=places"}
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag("/images/img/favicon.ico")
     link href="https://fonts.googleapis.com/css?family=Kosugi+Maru" rel="stylesheet"
   body
     = include_gon
